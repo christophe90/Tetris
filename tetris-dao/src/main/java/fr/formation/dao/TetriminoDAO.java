@@ -55,4 +55,8 @@ public class TetriminoDAO implements IDAO<Tetrimino>{
 		dataSource.getConnection().createStatement()
 				.executeUpdate("INSERT INTO tetrimino (nom,couleur) values('" + t.getNom() + "','" + t.getCouleur() + "')");
 	}
+	
+	public void test() {
+		
+	}
 }
