@@ -13,30 +13,6 @@
 	<dependencies>
 		<dependency>
 			<groupId>fr.formation</groupId>
-			<artifactId>tetris-model-faq</artifactId>
-			<version>${tetris.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>fr.formation</groupId>
-			<artifactId>tetris-model-auth</artifactId>
-			<version>${tetris.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>fr.formation</groupId>
-			<artifactId>tetris-model-piece</artifactId>
-			<version>${tetris.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>fr.formation</groupId>
-			<artifactId>tetris-model-score</artifactId>
-			<version>${tetris.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>fr.formation</groupId>
 			<artifactId>tetris-model-Tetrimino</artifactId>
 			<version>${tetris.version}</version>
 		</dependency>
