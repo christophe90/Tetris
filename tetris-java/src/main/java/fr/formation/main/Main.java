@@ -2,25 +2,28 @@ package fr.formation.main;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import fr.formation.auth.Admin;
+import fr.formation.auth.*;
 import fr.formation.config.AppConfig;
-import fr.formation.dao.IAuthDAO;
+import fr.formation.dao.*;
 
 public class Main {
 
 	public static void main(String[] args) {
 
-		prog1();
+		progAuth();
 
 	}
 
-	public static void prog1() {
+	public static void progAuth() {
 		
 		AnnotationConfigApplicationContext myContext = new AnnotationConfigApplicationContext(AppConfig.class);
 		IAuthDAO dao = myContext.getBean(IAuthDAO.class);
 		
-		Admin adm = new Admin("admin1","1234");
-		dao.save(adm);
+//		Admin adm = new Admin("admin1","1234");
+//		dao.save(adm);
+		
+//		User user = new User("toto","toto");
+//		dao.save(user);
 		
 		System.out.println(dao.findAll());
 		

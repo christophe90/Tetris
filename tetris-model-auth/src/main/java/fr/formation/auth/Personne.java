@@ -12,9 +12,10 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
 
 @Entity
 @Table(name="authentification")
@@ -35,6 +36,7 @@ public class Personne implements Serializable{
 	@Column(name="PER_PASSWORD")
 	@NotNull
 	@NotEmpty
+	@Size(min=4)
 	private String password;
 	
 	public Personne() {
