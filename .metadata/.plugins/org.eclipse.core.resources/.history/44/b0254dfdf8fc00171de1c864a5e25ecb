@@ -1,0 +1,15 @@
+package fr.formation.auth;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class UserTest {
+
+	@Test
+	public void testUser() {
+		User user = new User();
+		assertNotNull(user);
+	}
+
+}
