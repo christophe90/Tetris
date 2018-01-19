@@ -3,6 +3,7 @@ package fr.formation.auth;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,11 +13,13 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name="authentification")
-@Inheritance(strategy=InheritanceType.JOINED)
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="PER_TYPE")
 public class Personne implements Serializable{
 
 	@Id
@@ -38,15 +41,8 @@ public class Personne implements Serializable{
 	}
 	
 	public Personne(String login, String password) {
-		if (verifLogin())
-			this.login = login;
+		this.login = login;
 		this.password = password;
-	}
-	
-	public boolean verifLogin(IAuthDAO dao) {
-		if (dao.findByLogin(this.login).equals(null))
-			return true;
-		return false;
 	}
 
 	public int getId() {

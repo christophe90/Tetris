@@ -13,4 +13,6 @@
 <fullyQualifiedTypeName name="javax.validation.constraints.NotEmpty"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
 <fullyQualifiedTypeName name="fr.formation.auth.Personne"/>
+<fullyQualifiedTypeName name="javax.persistence.DiscriminatorColumn"/>
+<fullyQualifiedTypeName name="javax.persistence.DiscriminatorValue"/>
 </qualifiedTypeNameHistroy>

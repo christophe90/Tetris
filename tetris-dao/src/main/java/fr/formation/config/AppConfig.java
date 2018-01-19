@@ -38,7 +38,8 @@ public class AppConfig {
 	{
 		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
 		emf.setDataSource(dataSource);
-		emf.setPackagesToScan("fr.formation.model","fr.formation.auth"); // attention
+//		emf.setPackagesToScan("fr.formation.model","fr.formation.auth"); // attention
+		emf.setPackagesToScan("fr.formation.auth"); // attention
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		emf.setJpaVendorAdapter(vendorAdapter);
 		emf.setJpaProperties(this.hibernateProperties());

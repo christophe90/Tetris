@@ -22,5 +22,10 @@ public class IAuthDAOTest {
 	public void test() {
 		assertNotNull(dao);
 	}
+	
+	@Test
+	public void testFindByLogin() {
+		assertNotNull(dao.findByLogin("admin1"));
+	}
 
 }
