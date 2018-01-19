@@ -1,0 +1,16 @@
+package fr.formation.dao;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes=AppConfig.class)
+public class ITetriminoDAOTest {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

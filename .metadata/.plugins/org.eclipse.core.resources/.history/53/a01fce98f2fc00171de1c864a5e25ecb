@@ -1,0 +1,19 @@
+package fr.formation.auth;
+
+public class Personne {
+
+	private int id;
+	private String login;
+	private String password;
+	
+	public Personne() {
+	}
+	
+	public Personne(String login, String password) {
+		this.login = login;
+		this.password = password;
+	}
+	
+	
+	
+}

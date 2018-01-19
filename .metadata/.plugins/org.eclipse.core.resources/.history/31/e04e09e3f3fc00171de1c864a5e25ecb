@@ -1,0 +1,17 @@
+package fr.formation.auth;
+
+@Entity
+@Table(name="admin")
+public class Admin extends Personne{
+	
+	public Admin() {
+	}
+	
+	public Admin(String login, String password) {
+		super(login, password);
+	}
+	
+	
+	
+	
+}

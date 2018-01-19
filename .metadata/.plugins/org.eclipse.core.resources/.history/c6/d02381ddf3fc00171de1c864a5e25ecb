@@ -1,0 +1,15 @@
+package fr.formation.auth;
+
+public class Admin extends Personne{
+	
+	public Admin() {
+	}
+	
+	public Admin(String login, String password) {
+		super(login, password);
+	}
+	
+	
+	
+	
+}

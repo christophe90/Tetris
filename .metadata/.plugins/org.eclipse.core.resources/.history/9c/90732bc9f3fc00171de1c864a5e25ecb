@@ -1,0 +1,56 @@
+package fr.formation.auth;
+
+import java.io.Serializable;
+
+import org.springframework.data.annotation.Id;
+import javax.persistence.*;
+
+@Entity
+@Table(name="authentification")
+@Inheritance(strategy=InheritanceType.JOINED)
+public class Personne implements Serializable{
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="PER_ID")
+	private int id;
+	
+	@Column(name="PER_LOGIN")
+	private String login;
+	
+	@Column(name="PER_PASSWORD")
+	private String password;
+	
+	public Personne() {
+	}
+	
+	public Personne(String login, String password) {
+		this.login = login;
+		this.password = password;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+}
