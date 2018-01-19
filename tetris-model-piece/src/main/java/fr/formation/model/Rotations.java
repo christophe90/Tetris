@@ -1,25 +1,28 @@
 package fr.formation.model;
 
-public class Rotation {
+public class Rotations {
 	
-	private int id;
+	private Tetrimino tetrimino;
 	private Tetrimino tetrimino90;
 	private Tetrimino tetrimino180;
 	private Tetrimino tetrimino270;
 	
-	public Rotation() {
+	public Rotations() {
 	}
 	
-	public Rotation(Tetrimino tetrimino) {
-		// --------------------------------------- A Implementer
+	public Rotations(Tetrimino tetrimino) {
+		this.tetrimino  = this.tetrimino90 = this.tetrimino = this.tetrimino270 =tetrimino;
+		this.tetrimino90.ArrayToString(this.tetrimino.Rotation90SensHoraire());
+		this.tetrimino180.ArrayToString(this.tetrimino90.Rotation90SensHoraire());
+		this.tetrimino270.ArrayToString(this.tetrimino180.Rotation90SensHoraire());
 	}
 
-	public int getId() {
-		return id;
+	public Tetrimino getTetrimino() {
+		return tetrimino;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setTetrimino(Tetrimino tetrimino) {
+		this.tetrimino = tetrimino;
 	}
 
 	public Tetrimino getTetrimino90() {
@@ -48,9 +51,8 @@ public class Rotation {
 
 	public String toString() {
 		String rep = "";
-		if (id!=-1)
-			rep = "id : " + id + ", ";
-		
+		if (this.tetrimino!=null)
+			rep +="tetrimino original° : "+ this.tetrimino + ", ";
 		if (this.tetrimino90!=null)
 			rep +="tetrimino tourné à 90° : "+ this.tetrimino90 + ", ";
 		

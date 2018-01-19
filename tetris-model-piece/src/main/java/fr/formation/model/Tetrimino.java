@@ -1,7 +1,5 @@
 package fr.formation.model;
 
-import java.util.ArrayList;
-
 public class Tetrimino {
 	
 	private int id=-1;
@@ -18,7 +16,7 @@ public class Tetrimino {
 		this.matrice = matrice;
 	}
 	
-	public String[][] stringMatriceToArray() {
+	public String[][] stringToArray() {
 	
 		String[] ligne = this.matrice.split("/");
 		String[][] tab = new String[ligne.length][];
@@ -27,6 +25,31 @@ public class Tetrimino {
 			tab[i] = ligne[i].split(",");
 		}
 		return tab;
+	}
+	
+	public void ArrayToString(String[][] tab) {
+		
+		String reponse = "";
+		
+		for (int i=0; i<tab.length; i++) {
+			for (int j=0; j<tab[0].length; j++)
+				reponse += tab[i][j] + ",";
+			reponse += "/";
+		}
+		
+		this.matrice = reponse;
+	}
+	
+	public String[][] Rotation90SensHoraire() {
+		
+		String[][] tab = stringToArray();
+		String[][] rotationTab = new String[tab[0].length][tab.length];
+		
+		for (int i=0; i<tab.length; i++)
+			for (int j=0; j<tab[0].length; j++)
+				rotationTab[i][j] = tab[j][tab.length-i+1];
+			
+		return rotationTab;
 	}
 
 	public int getId() {
