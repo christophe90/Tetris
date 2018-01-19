@@ -1,4 +1,4 @@
-package fr.formation.auth;
+package tetris.model.auth;
 
 import static org.junit.Assert.*;
 
@@ -7,14 +7,14 @@ import javax.transaction.Transactional;
 import org.junit.Test;
 import org.springframework.test.annotation.Rollback;
 
-public class AdminTest {
+public class UserTest {
 
 	@Test
 	@Transactional
 	@Rollback(true)
-	public void testAdmin() {
-		Admin adm = new Admin();
-		assertNotNull(adm);
+	public void testUser() {
+		User user = new User();
+		assertNotNull(user);
 	}
 
 }

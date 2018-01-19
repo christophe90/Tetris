@@ -2,9 +2,9 @@ package fr.formation.main;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import fr.formation.auth.*;
 import fr.formation.config.AppConfig;
 import fr.formation.dao.*;
+import tetris.model.auth.*;
 
 public class Main {
 

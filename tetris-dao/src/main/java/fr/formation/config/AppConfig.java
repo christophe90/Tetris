@@ -38,8 +38,8 @@ public class AppConfig {
 	{
 		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
 		emf.setDataSource(dataSource);
-//		emf.setPackagesToScan("fr.formation.model","fr.formation.auth"); // attention
-		emf.setPackagesToScan("fr.formation.dao","fr.formation.auth"); // attention
+		emf.setPackagesToScan("fr.formation.dao","tetris.model.piece","tetris.model.jeu",
+				"tetris.model.faq","tetris.model.auth"); // attention
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		emf.setJpaVendorAdapter(vendorAdapter);
 		emf.setJpaProperties(this.hibernateProperties());

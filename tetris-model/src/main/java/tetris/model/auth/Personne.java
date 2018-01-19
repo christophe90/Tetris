@@ -1,4 +1,4 @@
-package fr.formation.auth;
+package tetris.model.auth;
 
 import java.io.Serializable;
 

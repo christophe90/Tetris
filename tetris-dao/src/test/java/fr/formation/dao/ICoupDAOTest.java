@@ -14,23 +14,18 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.formation.config.AppConfig;
-import tetris.model.auth.*;
+import tetris.model.auth.Personne;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=AppConfig.class)
-public class IAuthDAOTest {
+public class ICoupDAOTest {
 
 	@Autowired(required=false)
-	private IAuthDAO dao;
+	private ICoupDAO dao;
 	
 	@Test
-	public void test() {
+	public void testDAO() {
 		assertNotNull(dao);
-	}
-	
-	@Test
-	public void testFindByLogin() {
-		assertNotNull(dao.findByLogin("admin1"));
 	}
 	
 	@Test
@@ -42,25 +37,25 @@ public class IAuthDAOTest {
 	@Transactional
 	@Rollback(false)
 	public void testSave() {
-		Personne p = new Personne();
-		p.setPassword("0000");
-		dao.save(p);
-		assertNotEquals(0, p.getId());
+		Coup coup = new Coup();
+		coup.setPoints(10000);
+		dao.save(coup);
+		assertNotEquals(0, coup.getId());
 	}
 	
 	@Test
 	@Transactional
 	@Rollback(false)
 	public void testDelete() {
-		Optional<Personne> opPersonne = dao.findById(1);
-		Personne p;
+		Optional<Coup> opCoup = dao.findById(1);
+		Coup coup;
 		
-		assertTrue(opPersonne.isPresent());
-		p = opPersonne.get();
+		assertTrue(opCoup.isPresent());
+		coup = opCoup.get();
 		
-		assertNotNull(p);
+		assertNotNull(coup);
 		
-		dao.delete(p);
+		dao.delete(coup);
 		assertFalse(dao.findById(1).isPresent());
 	}
 	
@@ -68,20 +63,20 @@ public class IAuthDAOTest {
 	@Transactional
 	@Rollback(false)
 	public void testModifier() {
-		Optional<Personne> opPersonne = dao.findById(1);
-		Personne p;
+		Optional<Coup> opCoup = dao.findById(1);
+		Coup coup;
 		
-		assertTrue(opPersonne.isPresent());
-		p = opPersonne.get();
+		assertTrue(opCoup.isPresent());
+		coup = opCoup.get();
 		
-		assertNotNull(p);
+		assertNotNull(coup);
 		
-		assertNotEquals("ABCD", p.getPassword());
+		assertNotEquals(1000, coup.getScore());
 		
-		p.setPassword("ABCD");
-		dao.save(p);
+		coup.setScore(1000);
+		dao.save(coup);
 		
-		assertEquals("ABCD", dao.findById(1).get().getPassword());
+		assertEquals(1000, dao.findById(1).get().getScore());
 	}
 
 }

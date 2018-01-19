@@ -14,23 +14,18 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.formation.config.AppConfig;
-import tetris.model.auth.*;
+import tetris.model.auth.Personne;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=AppConfig.class)
-public class IAuthDAOTest {
+public class IFaqDAOTest {
 
 	@Autowired(required=false)
-	private IAuthDAO dao;
+	private IFaqDAO dao;
 	
 	@Test
-	public void test() {
+	public void testDAO() {
 		assertNotNull(dao);
-	}
-	
-	@Test
-	public void testFindByLogin() {
-		assertNotNull(dao.findByLogin("admin1"));
 	}
 	
 	@Test
@@ -42,25 +37,25 @@ public class IAuthDAOTest {
 	@Transactional
 	@Rollback(false)
 	public void testSave() {
-		Personne p = new Personne();
-		p.setPassword("0000");
-		dao.save(p);
-		assertNotEquals(0, p.getId());
+		Faq faq = new Faq();
+		faq.setQuestion("Couleur du cheval vert ?");
+		dao.save(faq);
+		assertNotEquals(0, faq.getId());
 	}
 	
 	@Test
 	@Transactional
 	@Rollback(false)
 	public void testDelete() {
-		Optional<Personne> opPersonne = dao.findById(1);
-		Personne p;
+		Optional<Faq> opFaq = dao.findById(1);
+		Faq faq;
 		
-		assertTrue(opPersonne.isPresent());
-		p = opPersonne.get();
+		assertTrue(opFaq.isPresent());
+		faq = opFaq.get();
 		
-		assertNotNull(p);
+		assertNotNull(faq);
 		
-		dao.delete(p);
+		dao.delete(faq);
 		assertFalse(dao.findById(1).isPresent());
 	}
 	
@@ -68,20 +63,20 @@ public class IAuthDAOTest {
 	@Transactional
 	@Rollback(false)
 	public void testModifier() {
-		Optional<Personne> opPersonne = dao.findById(1);
-		Personne p;
+		Optional<Faq> opFaq = dao.findById(1);
+		Faq faq;
 		
-		assertTrue(opPersonne.isPresent());
-		p = opPersonne.get();
+		assertTrue(opFaq.isPresent());
+		faq = opFaq.get();
 		
-		assertNotNull(p);
+		assertNotNull(faq);
 		
-		assertNotEquals("ABCD", p.getPassword());
+		assertNotEquals("Quoi ??", faq.getQuestion());
 		
-		p.setPassword("ABCD");
-		dao.save(p);
+		faq.setQuestion("Quoi ??");
+		dao.save(faq);
 		
-		assertEquals("ABCD", dao.findById(1).get().getPassword());
+		assertEquals("Quoi ??", dao.findById(1).get().getQuestion());
 	}
 
 }
