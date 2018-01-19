@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.formation.config.AppConfig;
 import tetris.model.auth.Personne;
+import tetris.model.jeu.Coup;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=AppConfig.class)
@@ -71,12 +72,12 @@ public class ICoupDAOTest {
 		
 		assertNotNull(coup);
 		
-		assertNotEquals(1000, coup.getScore());
+		assertNotEquals(1000, coup.getPoints());
 		
-		coup.setScore(1000);
+		coup.setPoints(1000);
 		dao.save(coup);
 		
-		assertEquals(1000, dao.findById(1).get().getScore());
+		assertEquals(1000, dao.findById(1).get().getPoints());
 	}
 
 }

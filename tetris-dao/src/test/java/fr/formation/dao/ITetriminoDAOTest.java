@@ -16,6 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import fr.formation.config.AppConfig;
 import fr.formation.dao.*;
 import tetris.model.auth.Personne;
+import tetris.model.piece.Tetrimino;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=AppConfig.class)

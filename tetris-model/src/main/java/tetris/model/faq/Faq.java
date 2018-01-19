@@ -19,10 +19,10 @@ public class Faq {
 	private int id;
 	
 	@Column(name="FAQ_QUESTION")
-	private List<String> questions;
+	private String questions;
 	
 	@Column(name="FAQ_REPONSE")
-	private List<String> reponse;
+	private String reponse;
 	
 	public Faq() {
 	}
@@ -35,19 +35,20 @@ public class Faq {
 		this.id = id;
 	}
 
-	public List<String> getQuestions() {
-		return this.questions;
+	public String getQuestions() {
+		return questions;
 	}
 
-	public void setQuestions(List<String> questions) {
+	public void setQuestions(String questions) {
 		this.questions = questions;
 	}
 
-	public List<String> getReponse() {
-		return this.reponse;
+	public String getReponse() {
+		return reponse;
 	}
 
-	public void setReponse(List<String> reponse) {
+	public void setReponse(String reponse) {
 		this.reponse = reponse;
 	}
+	
 }

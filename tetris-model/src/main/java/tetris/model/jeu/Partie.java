@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import tetris.formation.auth.User;
+import tetris.model.auth.User;
 
 
 @Entity

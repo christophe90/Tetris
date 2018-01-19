@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.formation.config.AppConfig;
 import tetris.model.auth.Personne;
+import tetris.model.faq.Faq;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=AppConfig.class)
@@ -38,7 +39,7 @@ public class IFaqDAOTest {
 	@Rollback(false)
 	public void testSave() {
 		Faq faq = new Faq();
-		faq.setQuestion("Couleur du cheval vert ?");
+		faq.setQuestions("Couleur du cheval vert ?");
 		dao.save(faq);
 		assertNotEquals(0, faq.getId());
 	}
@@ -71,12 +72,12 @@ public class IFaqDAOTest {
 		
 		assertNotNull(faq);
 		
-		assertNotEquals("Quoi ??", faq.getQuestion());
+		assertNotEquals("Quoi ??", faq.getQuestions());
 		
-		faq.setQuestion("Quoi ??");
+		faq.setQuestions("Quoi ??");
 		dao.save(faq);
 		
-		assertEquals("Quoi ??", dao.findById(1).get().getQuestion());
+		assertEquals("Quoi ??", dao.findById(1).get().getQuestions());
 	}
 
 }
