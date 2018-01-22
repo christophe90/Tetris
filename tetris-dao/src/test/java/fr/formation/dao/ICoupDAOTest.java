@@ -47,7 +47,7 @@ public class ICoupDAOTest {
 	@Transactional
 	@Rollback(true)
 	public void testDelete() {
-		Optional<Coup> opCoup = dao.findById(2);
+		Optional<Coup> opCoup = dao.findById(1);
 		Coup coup;
 		
 		assertTrue(opCoup.isPresent());

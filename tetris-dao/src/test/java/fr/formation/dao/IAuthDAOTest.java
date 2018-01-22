@@ -81,7 +81,7 @@ public class IAuthDAOTest {
 		p.setPassword("ABC");
 		dao.save(p);
 		
-		assertEquals("ABCD", dao.findById(1).get().getPassword());
+		assertEquals("ABC", dao.findById(1).get().getPassword());
 	}
 
 }
