@@ -2,16 +2,11 @@ package tetris.model.auth;
 
 import static org.junit.Assert.*;
 
-import javax.transaction.Transactional;
-
 import org.junit.Test;
-import org.springframework.test.annotation.Rollback;
 
 public class UserTest {
 
 	@Test
-	@Transactional
-	@Rollback(true)
 	public void testUser() {
 		User user = new User();
 		assertNotNull(user);

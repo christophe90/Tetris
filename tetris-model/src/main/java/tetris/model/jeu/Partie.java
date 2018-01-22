@@ -3,17 +3,9 @@ package tetris.model.jeu;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import tetris.model.auth.User;
-
 
 @Entity
 @Table(name="partie")
@@ -28,17 +20,16 @@ public class Partie {
 	private Date date;
 	
 	@ManyToOne
-	@Column(name="PAR_USER_ID")
+	@JoinColumn(name="PAR_USER_ID")
 	private User user;
 	
-	@OneToMany(mappedBy="coup")
-	private List<Coup> listCoups;
+//	@OneToMany(mappedBy="coup")
+//	private List<Coup> listCoups;
 	
 	@Column(name="PAR_SCORE")
 	private int score;
 	
 	public Partie() {
-		
 	}
 	
 	public int getId() {
@@ -49,12 +40,12 @@ public class Partie {
 		this.id = id;
 	}
 	
-	public Partie(Date date, User user, List<Coup> listCoups, int score) {
-		this.date = date;
-		this.user = user;
-		this.listCoups = listCoups;
-		this.score = score;
-		}
+//	public Partie(Date date, User user, List<Coup> listCoups, int score) {
+//		this.date = date;
+//		this.user = user;
+//		this.listCoups = listCoups;
+//		this.score = score;
+//	}
 
 	public Date getDate() {
 		return date;
@@ -72,13 +63,13 @@ public class Partie {
 		this.user = user;
 	}
 
-	public List<Coup> getListCoups() {
-		return listCoups;
-	}
-
-	public void setListCoups(List<Coup> listCoups) {
-		this.listCoups = listCoups;
-	}
+//	public List<Coup> getListCoups() {
+//		return listCoups;
+//	}
+//
+//	public void setListCoups(List<Coup> listCoups) {
+//		this.listCoups = listCoups;
+//	}
 
 	public int getScore() {
 		return score;
@@ -94,15 +85,15 @@ public class Partie {
 			rep = "id : " + id + ", ";
 		rep += "date : " + date + ", ";
 		
-		if (this.user!=null)
-			rep +="user : "+ this.user + ", ";
-		
-		if (this.listCoups!=null)
-			rep += "liste de coups : " + this.listCoups + ", ";
+//		if (this.user!=null)
+//			rep +="user : "+ this.user + ", ";
+//		
+//		if (this.listCoups!=null)
+//			rep += "liste de coups : " + this.listCoups + ", ";
 		
 		rep += "score : " + this.score;
 		return rep;
 	}
 	
-	
 }
+

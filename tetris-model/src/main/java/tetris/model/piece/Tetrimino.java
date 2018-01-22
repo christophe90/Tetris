@@ -1,23 +1,16 @@
 package tetris.model.piece;
 
+import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import tetris.model.jeu.Coup;
 
 @Entity
 @Table(name="tetrimino")
 @Inheritance(strategy=InheritanceType.JOINED)
-public class Tetrimino {
+public class Tetrimino implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,20 +24,20 @@ public class Tetrimino {
 	private String couleur;
 	
 	@Column(name="TET_STR")
-	protected String str;
+	protected String str; // la piece en format String
 	
-	@OneToMany(mappedBy="Coup")
-	private List<Coup> listCoups;
+//	@OneToMany(mappedBy="coup")
+//	private List<Coup> listCoups;
 	
 	public Tetrimino() {
 	}
 	
-//	public Tetrimino(String nom, String couleur, String str) {
-//		this.nom = nom;
-//		this.couleur = couleur;
-//		this.str = str;
-//	}
-//	
+	public Tetrimino(String nom, String couleur, String str) {
+		this.nom = nom;
+		this.couleur = couleur;
+		this.str = str;
+	}
+	
 //	public String[][] stringToArray(String myStr) {
 //	
 //		String[] ligne = myStr.split("/");
@@ -76,7 +69,7 @@ public class Tetrimino {
 //		
 //		for (int i=0; i<tab.length; i++)
 //			for (int j=0; j<tab[0].length; j++)
-//				rotationTab[i][j] = tab[j][tab.length-1-i];
+//				rotationTab[i][j] = tab[j][tab.length-i];
 //	
 //		return rotationTab;
 //	}
@@ -113,17 +106,19 @@ public class Tetrimino {
 		this.str = str;
 	}
 
-	public List<Coup> getListCoups() {
-		return listCoups;
-	}
-
-	public void setListCoups(List<Coup> listCoups) {
-		this.listCoups = listCoups;
-	}
+//	public List<Coup> getListCoups() {
+//		return listCoups;
+//	}
+//
+//	public void setListCoups(List<Coup> listCoups) {
+//		this.listCoups = listCoups;
+//	}
 
 	public String toString() {
 		String rep = "id : " + id + ", ";
 		rep += "nom : " + nom + ", couleur : " + couleur;
+		rep += ", " + str;
 		return rep;
 	}
 }
+

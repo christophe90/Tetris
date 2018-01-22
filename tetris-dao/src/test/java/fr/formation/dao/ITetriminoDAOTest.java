@@ -27,7 +27,7 @@ public class ITetriminoDAOTest {
 	
 	@Test
 	public void testDAO() {
-		assertNotNull(dao);;
+		assertNotNull(dao);
 	}
 
 	@Test

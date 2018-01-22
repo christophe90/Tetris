@@ -1,9 +1,8 @@
 package tetris.model.piece;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import java.util.Optional;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name="rotationTetrimino")
@@ -22,8 +21,8 @@ public class RotationTetrimino extends Tetrimino {
 	public RotationTetrimino() {
 	}
 	
-	public RotationTetrimino(Tetrimino tetrimino) {
-//		this.tetrimino90 = arrayToString(rotation90SensHoraire(stringToArray(str)));
+	public RotationTetrimino(Optional<Tetrimino> t) {
+//		this.tetrimino90 = arrayToString(rotation90SensHoraire(stringToArray(tetrimino.str)));
 //		this.tetrimino180 = arrayToString(rotation90SensHoraire(stringToArray(this.tetrimino90)));
 //		this.tetrimino270 = arrayToString(rotation90SensHoraire(stringToArray(this.tetrimino180)));
 	}
@@ -52,3 +51,4 @@ public class RotationTetrimino extends Tetrimino {
 		this.tetrimino270 = tetrimino270;
 	}
 }
+

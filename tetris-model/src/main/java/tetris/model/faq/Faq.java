@@ -1,7 +1,5 @@
 package tetris.model.faq;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,6 +25,12 @@ public class Faq {
 	public Faq() {
 	}
 	
+	public Faq(String questions, String reponse) {
+		super();
+		this.questions = questions;
+		this.reponse = reponse;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -49,6 +53,11 @@ public class Faq {
 
 	public void setReponse(String reponse) {
 		this.reponse = reponse;
+	}
+
+	@Override
+	public String toString() {
+		return "Faq [id=" + id + ", questions=" + questions + ", reponse=" + reponse + "]";
 	}
 	
 }

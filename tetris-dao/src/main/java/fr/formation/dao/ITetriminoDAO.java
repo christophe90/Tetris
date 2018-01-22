@@ -1,7 +1,8 @@
 package fr.formation.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+
+import tetris.model.piece.Tetrimino;
 
 import tetris.model.piece.Tetrimino;
 

@@ -1,15 +1,21 @@
 package tetris.model.auth;
 
 import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+
+import java.util.List;
+
+import javax.persistence.*;
+
+import tetris.model.jeu.*;
 
 @Entity
 @Table(name="user")
 @PrimaryKeyJoinColumn(name="USE_ID", referencedColumnName="PER_ID")
 @DiscriminatorValue("User")
 public class User extends Personne{
+	
+	@OneToMany(mappedBy="partie")
+	private static List<Partie> parties;
 
 	public User() {
 	}
