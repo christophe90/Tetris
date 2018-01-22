@@ -2,26 +2,15 @@ package tetris.model.auth;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import javax.persistence.Id;
-
 @Entity
 @Table(name="authentification")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="PER_TYPE")
-public class Personne implements Serializable{
+@Inheritance(strategy=InheritanceType.JOINED)
+public abstract class Personne implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -31,21 +20,13 @@ public class Personne implements Serializable{
 	@Column(name="PER_LOGIN")
 	@NotNull
 	@NotEmpty
-	private String login;
+	protected String login;
 	
 	@Column(name="PER_PASSWORD")
 	@NotNull
 	@NotEmpty
 	@Size(min=4)
-	private String password;
-	
-	public Personne() {
-	}
-	
-	public Personne(String login, String password) {
-		this.login = login;
-		this.password = password;
-	}
+	protected String password;
 
 	public int getId() {
 		return id;
