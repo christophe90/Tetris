@@ -2,6 +2,8 @@ package fr.formation.dao;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -14,6 +16,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.formation.config.AppConfig;
+import tetris.model.auth.User;
+import tetris.model.jeu.Coup;
 import tetris.model.jeu.Partie;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -37,8 +41,7 @@ public class IPartieDAOTest {
 	@Transactional
 	@Rollback(true)
 	public void testSave() {
-		Partie part =new Partie();
-		part.setScore(200);
+		Partie part = new Partie();
 		dao.save(part);
 		assertNotEquals(0, part.getId());
 	}
@@ -73,10 +76,14 @@ public class IPartieDAOTest {
 		
 		assertNotEquals(1000, part.getScore());
 		
-		part.setScore(1000);
+		List<Coup> listCoups = new ArrayList<Coup>();
+		Coup c1 = new Coup();
+		c1.setPoints(1000);
+		listCoups.add(c1);
+		part.setListCoups(listCoups);
 		dao.save(part);
 		
-		assertEquals(1000, dao.findById(1).get().getScore());
+		assertEquals(c1.getPoints(), dao.findById(1).get().getScore());
 	}
 
 }
