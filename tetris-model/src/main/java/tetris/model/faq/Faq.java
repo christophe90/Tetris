@@ -1,7 +1,5 @@
 package tetris.model.faq;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +13,7 @@ public class Faq {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "COU_ID")
+	@Column(name = "FAQ_ID")
 	private int id;
 	
 	@Column(name="FAQ_QUESTION")
@@ -27,6 +25,12 @@ public class Faq {
 	public Faq() {
 	}
 	
+	public Faq(String questions, String reponse) {
+		super();
+		this.questions = questions;
+		this.reponse = reponse;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -49,6 +53,11 @@ public class Faq {
 
 	public void setReponse(String reponse) {
 		this.reponse = reponse;
+	}
+
+	@Override
+	public String toString() {
+		return "Faq [id=" + id + ", questions=" + questions + ", reponse=" + reponse + "]";
 	}
 	
 }
