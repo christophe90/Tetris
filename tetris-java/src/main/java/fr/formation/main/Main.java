@@ -7,11 +7,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import fr.formation.config.AppConfig;
 import fr.formation.dao.*;
 import tetris.model.auth.*;
-import tetris.model.faq.Faq;
-import tetris.model.jeu.Coup;
-import tetris.model.jeu.Partie;
-import tetris.model.piece.RotationTetrimino;
-import tetris.model.piece.Tetrimino;
+import tetris.model.faq.*;
+import tetris.model.jeu.*;
+import tetris.model.piece.*;
 
 public class Main {
 
