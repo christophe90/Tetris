@@ -72,8 +72,8 @@ public class Coup implements Serializable {
 
 	public String toString() {
 		String rep = "";
-		if (id != -1)
-			rep = "id : " + id + ", ";
+
+		rep = "id : " + id + ", ";
 
 		if (this.partie != null)
 			rep += "partie : " + this.partie + ", ";
