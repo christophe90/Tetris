@@ -11,7 +11,6 @@ import tetris.model.jeu.*;
 @Entity
 @Table(name="user")
 @PrimaryKeyJoinColumn(name="USE_ID", referencedColumnName="PER_ID")
-@DiscriminatorValue("User")
 public class User extends Personne{
 	
 	@OneToMany(mappedBy="user")
@@ -21,7 +20,8 @@ public class User extends Personne{
 	}
 	
 	public User(String login, String password) {
-		super(login, password);
+		this.login=login;
+		this.password=password;
 	}
 	
 	@Override

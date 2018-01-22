@@ -7,16 +7,18 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import fr.formation.config.AppConfig;
 import fr.formation.dao.*;
 import tetris.model.auth.*;
-import tetris.model.faq.Faq;
-import tetris.model.jeu.Coup;
-import tetris.model.jeu.Partie;
-import tetris.model.piece.RotationTetrimino;
-import tetris.model.piece.Tetrimino;
+import tetris.model.faq.*;
+import tetris.model.jeu.*;
+import tetris.model.piece.*;
 
 public class Main {
 
 	public static void main(String[] args) {
 
+		progAuth();
+		progTetri();
+		progFaq();
+		progPartie();
 		progCoup();
 		
 	}
@@ -25,9 +27,9 @@ public class Main {
 		AnnotationConfigApplicationContext myContext = new AnnotationConfigApplicationContext(AppConfig.class);
 		ICoupDAO dao = myContext.getBean(ICoupDAO.class);
 		
-		Coup c = new Coup();
-		c.setPoints(10);
-		dao.save(c);
+//		Coup c = new Coup();
+//		c.setPoints(10);
+//		dao.save(c);
 		
 		System.out.println(dao.findAll());
 		
@@ -64,7 +66,7 @@ public class Main {
 		
 		AnnotationConfigApplicationContext myContext = new AnnotationConfigApplicationContext(AppConfig.class);
 		ITetriminoDAO dao = myContext.getBean(ITetriminoDAO.class);
-//		
+		
 //		RotationTetrimino rt = new RotationTetrimino("Piece 1", "rouge", "1,1,1/1,0,1/1,0,1");
 //		dao.save(rt);
 		
@@ -81,7 +83,7 @@ public class Main {
 		
 //		Admin adm = new Admin("admin1","1234");
 //		dao.save(adm);
-//		
+		
 //		User user = new User("toto","toto");
 //		dao.save(user);
 		

@@ -42,8 +42,7 @@ public class IAuthDAOTest {
 	@Transactional
 	@Rollback(true)
 	public void testSave() {
-		Personne p = new Personne();
-		p.setPassword("0000");
+		Admin p = new Admin("login","password");
 		dao.save(p);
 		assertNotEquals(0, p.getId());
 	}
