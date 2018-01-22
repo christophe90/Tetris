@@ -13,10 +13,8 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import fr.formation.auth.Personne;
-import fr.formation.auth.User;
 import fr.formation.config.AppConfig;
-import fr.formation.dao.*;
+import tetris.model.auth.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=AppConfig.class)
@@ -54,7 +52,7 @@ public class IAuthDAOTest {
 	@Transactional
 	@Rollback(true)
 	public void testDelete() {
-		Optional<Personne> opPersonne = dao.findById(1);
+		Optional<Personne> opPersonne = dao.findById(2);
 		Personne p;
 		
 		assertTrue(opPersonne.isPresent());
@@ -63,14 +61,14 @@ public class IAuthDAOTest {
 		assertNotNull(p);
 		
 		dao.delete(p);
-		assertFalse(dao.findById(1).isPresent());
+		assertFalse(dao.findById(2).isPresent());
 	}
 	
 	@Test
 	@Transactional
 	@Rollback(true)
 	public void testModifier() {
-		Optional<Personne> opPersonne = dao.findById(1);
+		Optional<Personne> opPersonne = dao.findById(2);
 		Personne p;
 		
 		assertTrue(opPersonne.isPresent());
@@ -83,7 +81,7 @@ public class IAuthDAOTest {
 		p.setPassword("ABCD");
 		dao.save(p);
 		
-		assertEquals("ABCD", dao.findById(1).get().getPassword());
+		assertEquals("ABCD", dao.findById(2).get().getPassword());
 	}
 
 }

@@ -2,4 +2,5 @@
 <aop-reference-model>
 <aop-project name="tetris-model-auth"/>
 <aop-project name="tetris-dao"/>
+<aop-project name="tetris-java"/>
 </aop-reference-model>
