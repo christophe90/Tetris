@@ -14,7 +14,7 @@ public class Partie {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="PAR_ID")
-	private int id=-1;
+	private int id;
 	
 	@Column(name="PAR_DATE")
 	private Date date;
@@ -81,13 +81,11 @@ public class Partie {
 
 	public String toString() {
 		String rep = "";
-		if (id!=-1)
-			rep = "id : " + id + ", ";
+		rep = "id : " + id + ", ";
 		rep += "date : " + date + ", ";
+		if (this.user!=null)
+			rep +="user : "+ this.user + ", ";
 		
-//		if (this.user!=null)
-//			rep +="user : "+ this.user + ", ";
-//		
 //		if (this.listCoups!=null)
 //			rep += "liste de coups : " + this.listCoups + ", ";
 		
