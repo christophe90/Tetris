@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 
 import tetris.model.auth.User;
+import tetris.model.jeu.Coup;
 
 @Entity
 @Table(name="partie")
@@ -23,8 +24,8 @@ public class Partie {
 	@JoinColumn(name="PAR_USER_ID")
 	private User user;
 	
-//	@OneToMany(mappedBy="coup")
-//	private List<Coup> listCoups;
+	@OneToMany(mappedBy="partie") // nom de l'attribut et non pas de la table
+	private List<Coup> listCoups;
 	
 	@Column(name="PAR_SCORE")
 	private int score;
@@ -40,12 +41,12 @@ public class Partie {
 		this.id = id;
 	}
 	
-//	public Partie(Date date, User user, List<Coup> listCoups, int score) {
-//		this.date = date;
-//		this.user = user;
-//		this.listCoups = listCoups;
-//		this.score = score;
-//	}
+	public Partie(Date date, User user, List<Coup> listCoups, int score) {
+		this.date = date;
+		this.user = user;
+		this.listCoups = listCoups;
+		this.score = score;
+	}
 
 	public Date getDate() {
 		return date;
@@ -63,13 +64,13 @@ public class Partie {
 		this.user = user;
 	}
 
-//	public List<Coup> getListCoups() {
-//		return listCoups;
-//	}
-//
-//	public void setListCoups(List<Coup> listCoups) {
-//		this.listCoups = listCoups;
-//	}
+	public List<Coup> getListCoups() {
+		return listCoups;
+	}
+
+	public void setListCoups(List<Coup> listCoups) {
+		this.listCoups = listCoups;
+	}
 
 	public int getScore() {
 		return score;
@@ -85,10 +86,10 @@ public class Partie {
 		rep += "date : " + date + ", ";
 		if (this.user!=null)
 			rep +="user : "+ this.user + ", ";
-		
+//		
 //		if (this.listCoups!=null)
 //			rep += "liste de coups : " + this.listCoups + ", ";
-		
+//		
 		rep += "score : " + this.score;
 		return rep;
 	}
