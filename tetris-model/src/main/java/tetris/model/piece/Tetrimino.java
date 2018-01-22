@@ -26,8 +26,8 @@ public class Tetrimino implements Serializable {
 	@Column(name="TET_STR")
 	protected String str; // la piece en format String
 	
-//	@OneToMany(mappedBy="coup")
-//	private List<Coup> listCoups;
+	@OneToMany(mappedBy="tetrimino")
+	private List<Coup> listCoups;
 	
 	public Tetrimino() {
 	}
@@ -110,13 +110,13 @@ public class Tetrimino implements Serializable {
 		this.str = str;
 	}
 
-//	public List<Coup> getListCoups() {
-//		return listCoups;
-//	}
-//
-//	public void setListCoups(List<Coup> listCoups) {
-//		this.listCoups = listCoups;
-//	}
+	public List<Coup> getListCoups() {
+		return listCoups;
+	}
+
+	public void setListCoups(List<Coup> listCoups) {
+		this.listCoups = listCoups;
+	}
 
 	public String toString() {
 		String rep = "id : " + id + ", ";

@@ -47,7 +47,7 @@ public class IPartieDAOTest {
 	@Transactional
 	@Rollback(true)
 	public void testDelete() {
-		Optional<Partie> opPartie = dao.findById(6);
+		Optional<Partie> opPartie = dao.findById(1);
 		Partie part;
 		
 		assertTrue(opPartie.isPresent());
@@ -63,7 +63,7 @@ public class IPartieDAOTest {
 	@Transactional
 	@Rollback(true)
 	public void testModifier() {
-		Optional<Partie> opPartie = dao.findById(6);
+		Optional<Partie> opPartie = dao.findById(1);
 		Partie part;
 		
 		assertTrue(opPartie.isPresent());
@@ -76,7 +76,7 @@ public class IPartieDAOTest {
 		part.setScore(1000);
 		dao.save(part);
 		
-		assertEquals(1000, dao.findById(6).get().getScore());
+		assertEquals(1000, dao.findById(1).get().getScore());
 	}
 
 }
