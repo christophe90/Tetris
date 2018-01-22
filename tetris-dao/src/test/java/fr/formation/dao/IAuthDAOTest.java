@@ -82,5 +82,23 @@ public class IAuthDAOTest {
 		
 		assertEquals("ABC", dao.findById(1).get().getPassword());
 	}
+	
+	@Test
+	public void testFindAdmin() {
+		Admin adm = dao.findAdmin("admin1", "1234");
+		assertNotNull(adm);
+		
+		assertTrue("admin1".equals(adm.getLogin()));
+		assertTrue("1234".equals(adm.getPassword()));
+	}
+	
+	@Test
+	public void testFindUser() {
+		User user = dao.findUser("toto", "toto");
+		assertNotNull(user);
+		
+		assertTrue("toto".equals(user.getLogin()));
+		assertTrue("toto".equals(user.getPassword()));
+	}
 
 }
