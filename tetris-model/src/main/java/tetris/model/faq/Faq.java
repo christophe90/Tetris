@@ -13,7 +13,7 @@ public class Faq {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "COU_ID")
+	@Column(name = "FAQ_ID")
 	private int id;
 	
 	@Column(name="FAQ_QUESTION")

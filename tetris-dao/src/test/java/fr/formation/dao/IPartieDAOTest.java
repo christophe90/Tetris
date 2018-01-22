@@ -14,6 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.formation.config.AppConfig;
+import tetris.model.jeu.Partie;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=AppConfig.class)
@@ -34,7 +35,7 @@ public class IPartieDAOTest {
 	
 	@Test
 	@Transactional
-	@Rollback(false)
+	@Rollback(true)
 	public void testSave() {
 		Partie part =new Partie();
 		part.setScore(200);
@@ -44,9 +45,9 @@ public class IPartieDAOTest {
 	
 	@Test
 	@Transactional
-	@Rollback(false)
+	@Rollback(true)
 	public void testDelete() {
-		Optional<Partie> opPartie = dao.findById(1);
+		Optional<Partie> opPartie = dao.findById(6);
 		Partie part;
 		
 		assertTrue(opPartie.isPresent());
@@ -60,9 +61,9 @@ public class IPartieDAOTest {
 	
 	@Test
 	@Transactional
-	@Rollback(false)
+	@Rollback(true)
 	public void testModifier() {
-		Optional<Partie> opPartie = dao.findById(1);
+		Optional<Partie> opPartie = dao.findById(6);
 		Partie part;
 		
 		assertTrue(opPartie.isPresent());
@@ -75,7 +76,7 @@ public class IPartieDAOTest {
 		part.setScore(1000);
 		dao.save(part);
 		
-		assertEquals(1000, dao.findById(1).get().getScore());
+		assertEquals(1000, dao.findById(6).get().getScore());
 	}
 
 }
