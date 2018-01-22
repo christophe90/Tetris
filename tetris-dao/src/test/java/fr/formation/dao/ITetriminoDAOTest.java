@@ -38,7 +38,7 @@ public class ITetriminoDAOTest {
 	@Transactional
 	@Rollback(true)
 	public void testSave() {
-		Tetrimino t = new Tetrimino();
+		RotationTetrimino t = new RotationTetrimino();
 		t.setNom("toto");
 		dao.save(t);
 		assertNotEquals(0, t.getId());
@@ -49,10 +49,10 @@ public class ITetriminoDAOTest {
 	@Rollback(true)
 	public void testDelete() {
 		Optional<Tetrimino> opTetrimino = dao.findById(1);
-		Tetrimino t;
+		RotationTetrimino t;
 		
 		assertTrue(opTetrimino.isPresent());
-		t = opTetrimino.get();
+		t = (RotationTetrimino) opTetrimino.get();
 		
 		assertNotNull(t);
 		
@@ -65,10 +65,10 @@ public class ITetriminoDAOTest {
 	@Rollback(true)
 	public void testModifier() {
 		Optional<Tetrimino> opTetrimino = dao.findById(1);
-		Tetrimino t;
+		RotationTetrimino t;
 		
 		assertTrue(opTetrimino.isPresent());
-		t = opTetrimino.get();
+		t = (RotationTetrimino) opTetrimino.get();
 		
 		assertNotNull(t);
 		

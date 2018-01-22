@@ -17,8 +17,21 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		progPartie();
+		progCoup();
 		
+	}
+	
+	public static void progCoup() {
+		AnnotationConfigApplicationContext myContext = new AnnotationConfigApplicationContext(AppConfig.class);
+		ICoupDAO dao = myContext.getBean(ICoupDAO.class);
+		
+		Coup c = new Coup();
+		c.setPoints(10);
+		dao.save(c);
+		
+		System.out.println(dao.findAll());
+		
+		myContext.close();
 	}
 	
 	public static void progPartie() {

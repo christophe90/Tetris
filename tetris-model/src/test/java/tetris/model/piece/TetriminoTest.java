@@ -8,7 +8,7 @@ public class TetriminoTest {
 	
 	@Test
 	public void testTetrimino() {
-		Tetrimino tetrimino= new Tetrimino();
+		RotationTetrimino tetrimino= new RotationTetrimino();
 		assertNotNull(tetrimino);
 	}
 	
