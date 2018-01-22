@@ -88,11 +88,7 @@ public class Partie {
 		rep = "id : " + id + ", ";
 		rep += "date : " + date + ", ";
 		if (this.user!=null)
-			rep +="user : "+ this.user + ", ";
-//		
-//		if (this.listCoups!=null)
-//			rep += "liste de coups : " + this.listCoups + ", ";
-//		
+			rep += "user : "+ this.user + ", ";
 		rep += "score : " + this.score;
 		return rep;
 	}
