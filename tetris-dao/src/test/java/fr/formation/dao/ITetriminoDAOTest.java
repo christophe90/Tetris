@@ -14,7 +14,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.formation.config.AppConfig;
-import tetris.model.piece.Tetrimino;
+import fr.formation.dao.*;
+import tetris.model.auth.Personne;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=AppConfig.class)
@@ -35,7 +36,7 @@ public class ITetriminoDAOTest {
 	
 	@Test
 	@Transactional
-	@Rollback(true)
+	@Rollback(false)
 	public void testSave() {
 		Tetrimino t = new Tetrimino();
 		t.setNom("toto");
@@ -45,7 +46,7 @@ public class ITetriminoDAOTest {
 	
 	@Test
 	@Transactional
-	@Rollback(true)
+	@Rollback(false)
 	public void testDelete() {
 		Optional<Tetrimino> opTetrimino = dao.findById(1);
 		Tetrimino t;
@@ -61,7 +62,7 @@ public class ITetriminoDAOTest {
 	
 	@Test
 	@Transactional
-	@Rollback(true)
+	@Rollback(false)
 	public void testModifier() {
 		Optional<Tetrimino> opTetrimino = dao.findById(1);
 		Tetrimino t;

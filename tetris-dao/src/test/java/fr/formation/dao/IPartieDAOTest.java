@@ -14,7 +14,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.formation.config.AppConfig;
-import tetris.model.jeu.Partie;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=AppConfig.class)
@@ -35,7 +34,7 @@ public class IPartieDAOTest {
 	
 	@Test
 	@Transactional
-	@Rollback(true)
+	@Rollback(false)
 	public void testSave() {
 		Partie part =new Partie();
 		part.setScore(200);
@@ -45,7 +44,7 @@ public class IPartieDAOTest {
 	
 	@Test
 	@Transactional
-	@Rollback(true)
+	@Rollback(false)
 	public void testDelete() {
 		Optional<Partie> opPartie = dao.findById(1);
 		Partie part;
@@ -61,7 +60,7 @@ public class IPartieDAOTest {
 	
 	@Test
 	@Transactional
-	@Rollback(true)
+	@Rollback(false)
 	public void testModifier() {
 		Optional<Partie> opPartie = dao.findById(1);
 		Partie part;

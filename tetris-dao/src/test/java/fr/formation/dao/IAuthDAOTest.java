@@ -40,7 +40,7 @@ public class IAuthDAOTest {
 	
 	@Test
 	@Transactional
-	@Rollback(true)
+	@Rollback(false)
 	public void testSave() {
 		Personne p = new Personne();
 		p.setPassword("0000");
@@ -50,7 +50,7 @@ public class IAuthDAOTest {
 	
 	@Test
 	@Transactional
-	@Rollback(true)
+	@Rollback(false)
 	public void testDelete() {
 		Optional<Personne> opPersonne = dao.findById(2);
 		Personne p;
@@ -66,7 +66,7 @@ public class IAuthDAOTest {
 	
 	@Test
 	@Transactional
-	@Rollback(true)
+	@Rollback(false)
 	public void testModifier() {
 		Optional<Personne> opPersonne = dao.findById(2);
 		Personne p;

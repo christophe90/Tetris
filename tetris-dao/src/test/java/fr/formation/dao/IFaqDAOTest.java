@@ -14,7 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.formation.config.AppConfig;
-import tetris.model.faq.Faq;
+import tetris.model.auth.Personne;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=AppConfig.class)
@@ -35,17 +35,17 @@ public class IFaqDAOTest {
 	
 	@Test
 	@Transactional
-	@Rollback(true)
+	@Rollback(false)
 	public void testSave() {
 		Faq faq = new Faq();
-		faq.setQuestions("Couleur du cheval vert ?");
+		faq.setQuestion("Couleur du cheval vert ?");
 		dao.save(faq);
 		assertNotEquals(0, faq.getId());
 	}
 	
 	@Test
 	@Transactional
-	@Rollback(true)
+	@Rollback(false)
 	public void testDelete() {
 		Optional<Faq> opFaq = dao.findById(1);
 		Faq faq;
@@ -61,7 +61,7 @@ public class IFaqDAOTest {
 	
 	@Test
 	@Transactional
-	@Rollback(true)
+	@Rollback(false)
 	public void testModifier() {
 		Optional<Faq> opFaq = dao.findById(1);
 		Faq faq;
@@ -71,12 +71,12 @@ public class IFaqDAOTest {
 		
 		assertNotNull(faq);
 		
-		assertNotEquals("Quoi ??", faq.getQuestions());
+		assertNotEquals("Quoi ??", faq.getQuestion());
 		
-		faq.setQuestions("Quoi ??");
+		faq.setQuestion("Quoi ??");
 		dao.save(faq);
 		
-		assertEquals("Quoi ??", dao.findById(1).get().getQuestions());
+		assertEquals("Quoi ??", dao.findById(1).get().getQuestion());
 	}
 
 }

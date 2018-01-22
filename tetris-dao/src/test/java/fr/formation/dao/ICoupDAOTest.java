@@ -14,7 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.formation.config.AppConfig;
-import tetris.model.jeu.Coup;
+import tetris.model.auth.Personne;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=AppConfig.class)
@@ -35,7 +35,7 @@ public class ICoupDAOTest {
 	
 	@Test
 	@Transactional
-	@Rollback(true)
+	@Rollback(false)
 	public void testSave() {
 		Coup coup = new Coup();
 		coup.setPoints(10000);
@@ -45,7 +45,7 @@ public class ICoupDAOTest {
 	
 	@Test
 	@Transactional
-	@Rollback(true)
+	@Rollback(false)
 	public void testDelete() {
 		Optional<Coup> opCoup = dao.findById(1);
 		Coup coup;
@@ -61,7 +61,7 @@ public class ICoupDAOTest {
 	
 	@Test
 	@Transactional
-	@Rollback(true)
+	@Rollback(false)
 	public void testModifier() {
 		Optional<Coup> opCoup = dao.findById(1);
 		Coup coup;
@@ -71,12 +71,12 @@ public class ICoupDAOTest {
 		
 		assertNotNull(coup);
 		
-		assertNotEquals(1000, coup.getPoints());
+		assertNotEquals(1000, coup.getScore());
 		
-		coup.setPoints(1000);
+		coup.setScore(1000);
 		dao.save(coup);
 		
-		assertEquals(1000, dao.findById(1).get().getPoints());
+		assertEquals(1000, dao.findById(1).get().getScore());
 	}
 
 }
