@@ -17,15 +17,29 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		progPartie();
+		progCoup();
 		
+	}
+	
+	public static void progCoup() {
+		AnnotationConfigApplicationContext myContext = new AnnotationConfigApplicationContext(AppConfig.class);
+		ICoupDAO dao = myContext.getBean(ICoupDAO.class);
+		
+		Coup c = new Coup();
+		c.setPoints(10);
+		dao.save(c);
+		
+		System.out.println(dao.findAll());
+		
+		myContext.close();
 	}
 	
 	public static void progPartie() {
 		AnnotationConfigApplicationContext myContext = new AnnotationConfigApplicationContext(AppConfig.class);
 		IPartieDAO dao = myContext.getBean(IPartieDAO.class);
 		
-		Partie p = new Partie();
+//		Partie p = new Partie();
+//		dao.save(p);
 		
 		System.out.println(dao.findAll());
 		
@@ -50,12 +64,8 @@ public class Main {
 		
 		AnnotationConfigApplicationContext myContext = new AnnotationConfigApplicationContext(AppConfig.class);
 		ITetriminoDAO dao = myContext.getBean(ITetriminoDAO.class);
-		
-//		Tetrimino t = new Tetrimino("Piece 1", "rouge", "1,1,1/1,0,1/1,0,1");
-//		dao.save(t);
-		
-//		Optional<Tetrimino> t = dao.findById(1);
-//		RotationTetrimino rt = new RotationTetrimino(t);
+//		
+//		RotationTetrimino rt = new RotationTetrimino("Piece 1", "rouge", "1,1,1/1,0,1/1,0,1");
 //		dao.save(rt);
 		
 		System.out.println(dao.findAll());

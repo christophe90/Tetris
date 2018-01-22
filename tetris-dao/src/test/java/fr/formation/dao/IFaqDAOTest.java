@@ -30,7 +30,7 @@ public class IFaqDAOTest {
 	
 	@Test
 	public void testFindById() {
-		assertNotNull(dao.findById(2));
+		assertNotNull(dao.findById(1));
 	}
 	
 	@Test
@@ -47,7 +47,7 @@ public class IFaqDAOTest {
 	@Transactional
 	@Rollback(true)
 	public void testDelete() {
-		Optional<Faq> opFaq = dao.findById(2);
+		Optional<Faq> opFaq = dao.findById(1);
 		Faq faq;
 		
 		assertTrue(opFaq.isPresent());
@@ -56,14 +56,14 @@ public class IFaqDAOTest {
 		assertNotNull(faq);
 		
 		dao.delete(faq);
-		assertFalse(dao.findById(2).isPresent());
+		assertFalse(dao.findById(1).isPresent());
 	}
 	
 	@Test
 	@Transactional
 	@Rollback(true)
 	public void testModifier() {
-		Optional<Faq> opFaq = dao.findById(2);
+		Optional<Faq> opFaq = dao.findById(1);
 		Faq faq;
 		
 		assertTrue(opFaq.isPresent());
@@ -76,7 +76,7 @@ public class IFaqDAOTest {
 		faq.setQuestions("Quoi ??");
 		dao.save(faq);
 		
-		assertEquals("Quoi ??", dao.findById(2).get().getQuestions());
+		assertEquals("Quoi ??", dao.findById(1).get().getQuestions());
 	}
 
 }

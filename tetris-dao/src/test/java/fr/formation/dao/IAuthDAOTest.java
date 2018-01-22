@@ -30,12 +30,12 @@ public class IAuthDAOTest {
 	
 	@Test
 	public void testFindByLogin() {
-		assertNotNull(dao.findByLogin("user1"));
+		assertNotNull(dao.findByLogin("admin1"));
 	}
 	
 	@Test
 	public void testFindById() {
-		assertNotNull(dao.findById(3));
+		assertNotNull(dao.findById(1));
 	}
 	
 	@Test
@@ -52,7 +52,7 @@ public class IAuthDAOTest {
 	@Transactional
 	@Rollback(true)
 	public void testDelete() {
-		Optional<Personne> opPersonne = dao.findById(2);
+		Optional<Personne> opPersonne = dao.findById(1);
 		Personne p;
 		
 		assertTrue(opPersonne.isPresent());
@@ -61,14 +61,14 @@ public class IAuthDAOTest {
 		assertNotNull(p);
 		
 		dao.delete(p);
-		assertFalse(dao.findById(2).isPresent());
+		assertFalse(dao.findById(1).isPresent());
 	}
 	
 	@Test
 	@Transactional
 	@Rollback(true)
 	public void testModifier() {
-		Optional<Personne> opPersonne = dao.findById(2);
+		Optional<Personne> opPersonne = dao.findById(1);
 		Personne p;
 		
 		assertTrue(opPersonne.isPresent());
@@ -81,7 +81,7 @@ public class IAuthDAOTest {
 		p.setPassword("ABC");
 		dao.save(p);
 		
-		assertEquals("ABCD", dao.findById(2).get().getPassword());
+		assertEquals("ABC", dao.findById(1).get().getPassword());
 	}
 
 }

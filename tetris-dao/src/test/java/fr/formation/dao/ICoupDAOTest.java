@@ -47,7 +47,7 @@ public class ICoupDAOTest {
 	@Transactional
 	@Rollback(true)
 	public void testDelete() {
-		Optional<Coup> opCoup = dao.findById(2);
+		Optional<Coup> opCoup = dao.findById(1);
 		Coup coup;
 		
 		assertTrue(opCoup.isPresent());
@@ -56,14 +56,14 @@ public class ICoupDAOTest {
 		assertNotNull(coup);
 		
 		dao.delete(coup);
-		assertFalse(dao.findById(2).isPresent());
+		assertFalse(dao.findById(1).isPresent());
 	}
 	
 	@Test
 	@Transactional
 	@Rollback(true)
 	public void testModifier() {
-		Optional<Coup> opCoup = dao.findById(2);
+		Optional<Coup> opCoup = dao.findById(1);
 		Coup coup;
 		
 		assertTrue(opCoup.isPresent());
@@ -76,7 +76,7 @@ public class ICoupDAOTest {
 		coup.setPoints(1000);
 		dao.save(coup);
 		
-		assertEquals(1000, dao.findById(2).get().getPoints());
+		assertEquals(1000, dao.findById(1).get().getPoints());
 	}
 
 }

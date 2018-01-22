@@ -1,14 +1,14 @@
 package tetris.model.piece;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 public class TetriminoTest {
 	
 	@Test
-	public void testUser() {
-		Tetrimino tetrimino= new Tetrimino();
+	public void testTetrimino() {
+		RotationTetrimino tetrimino= new RotationTetrimino();
 		assertNotNull(tetrimino);
 	}
 	
