@@ -1,11 +1,8 @@
 package tetris.model.piece;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 public class RotationTetriminoTest {
 	
@@ -26,4 +23,45 @@ public class RotationTetriminoTest {
 		String str270 = "1,0,0/1,0,0/1,0,0/1,1,1";
 		assertEquals(str270, rot.getTetrimino270());
 	}
+	
+	@Test
+	public void stringToArrayTest() {
+		String str = "1,1,1,1/1,0,0,0/1,0,0,0";
+		rot = new RotationTetrimino("test1", "jaune",str);
+		String[][] tab = rot.stringToArray(str);
+		
+		String[][] valeurAttendue = {{"1","1","1","1"},{"1","0","0","0"},{"1","0","0","0"}};
+		
+		for (int i=0; i<tab.length; i++)
+			for (int j=0; j<tab[0].length; j++)
+				assertEquals(tab[i][j], valeurAttendue[i][j]);
+	}
+	
+	@Test
+	public void rotation90SensHoraire() {
+		String str = "1,1,1,1/1,0,0,0/1,0,0,0";
+		rot = new RotationTetrimino("test1", "jaune",str);
+		String[][] tab = {{"1","1","1","1"},{"1","0","0","0"},{"1","0","0","0"}};
+		String[][] resultat = rot.rotation90SensHoraire(tab);
+		
+		String[][] valeurAttendue = {{"1","1","1"},{"0","0","1"},{"0","0","1"},{"0","0","1"}};
+		
+		for (int i=0; i<resultat.length; i++)
+			for (int j=0; j<resultat[0].length; j++)
+				assertEquals(resultat[i][j], valeurAttendue[i][j]);
+	}
+
+	
+	@Test
+	public void arrayToStringTest() {
+		String str = "1,1,1,1/1,0,0,0/1,0,0,0";
+		rot = new RotationTetrimino("test1", "jaune",str);
+		String[][] tab = {{"1","1","1","1"},{"1","0","0","0"},{"1","0","0","0"}};
+		String valeurAttendue = "1,1,1,1/1,0,0,0/1,0,0,0";
+		
+		String resultat = rot.arrayToString(tab);
+		
+		assertEquals(resultat,valeurAttendue);
+	}
+	
 }
