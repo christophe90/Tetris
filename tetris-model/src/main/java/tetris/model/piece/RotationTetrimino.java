@@ -21,10 +21,11 @@ public class RotationTetrimino extends Tetrimino {
 	public RotationTetrimino() {
 	}
 	
-	public RotationTetrimino(Optional<Tetrimino> t) {
-//		this.tetrimino90 = arrayToString(rotation90SensHoraire(stringToArray(tetrimino.str)));
-//		this.tetrimino180 = arrayToString(rotation90SensHoraire(stringToArray(this.tetrimino90)));
-//		this.tetrimino270 = arrayToString(rotation90SensHoraire(stringToArray(this.tetrimino180)));
+	public RotationTetrimino(String nom, String couleur, String str) {
+		super(nom, couleur, str);
+		this.tetrimino90 = arrayToString(rotation90SensHoraire(stringToArray(str)));
+		this.tetrimino180 = arrayToString(rotation90SensHoraire(stringToArray(this.tetrimino90)));
+		this.tetrimino270 = arrayToString(rotation90SensHoraire(stringToArray(this.tetrimino180)));
 	}
 
 	public String getTetrimino90() {

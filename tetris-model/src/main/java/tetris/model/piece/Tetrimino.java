@@ -38,41 +38,45 @@ public class Tetrimino implements Serializable {
 		this.str = str;
 	}
 	
-//	public String[][] stringToArray(String myStr) {
-//	
-//		String[] ligne = myStr.split("/");
-//		String[][] tab = new String[ligne.length][];
-//		
-//		for (int i=0; i<ligne.length; i++) {
-//			tab[i] = ligne[i].split(",");
-//		}
-//		return tab;
-//	}
-//	
-//	public String arrayToString(String[][] tab) {
-//		
-//		String reponse = "";
-//		
-//		for (int i=0; i<tab.length; i++) {
-//			for (int j=0; j<tab[0].length; j++)
-//				reponse += tab[i][j] + ",";
-//			reponse += "/";
-//		}
-//		
-//		return reponse;
-//	}
-//	
-//	public String[][] rotation90SensHoraire(String[][] tab) {
-//		
-//	
-//		String[][] rotationTab = new String[tab[0].length][tab.length];
-//		
-//		for (int i=0; i<tab.length; i++)
-//			for (int j=0; j<tab[0].length; j++)
-//				rotationTab[i][j] = tab[j][tab.length-i];
-//	
-//		return rotationTab;
-//	}
+	public String[][] stringToArray(String myStr) {
+	
+		String[] ligne = myStr.split("/");
+		String[][] tab = new String[ligne.length][];
+		
+		for (int i=0; i<ligne.length; i++) {
+			tab[i] = ligne[i].split(",");
+		}
+		return tab;
+	}
+	
+	public String arrayToString(String[][] tab) {
+		
+		String reponse = "";
+		
+		for (int i=0; i<tab.length; i++) {
+			for (int j=0; j<tab[0].length; j++) {
+				reponse += tab[i][j];
+				if (j!=tab[0].length-1)
+					reponse += ",";
+			}
+			if (i!=tab.length-1)
+				reponse += "/";
+		}
+		
+		return reponse;
+	}
+	
+	public static String[][] rotation90SensHoraire(String[][] tab) {
+		
+	
+		String[][] rotationTab = new String[tab[0].length][tab.length];
+		
+		for (int i=0; i<tab.length; i++)
+			for (int j=0; j<tab[0].length; j++)
+				rotationTab[j][tab.length-i-1] = tab[i][j];
+	
+		return rotationTab;
+	}
 
 	public int getId() {
 		return id;
