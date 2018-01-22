@@ -1,5 +1,7 @@
 package tetris.model.jeu;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+
 import java.util.Date;
 import java.util.List;
 
@@ -41,11 +43,11 @@ public class Partie {
 		this.id = id;
 	}
 	
-	public Partie(Date date, User user, List<Coup> listCoups, int score) {
+	public Partie(Date date, User user, List<Coup> listCoups) {
 		this.date = date;
 		this.user = user;
 		this.listCoups = listCoups;
-		this.score = score;
+		calculScore();
 	}
 
 	public Date getDate() {
@@ -70,6 +72,7 @@ public class Partie {
 
 	public void setListCoups(List<Coup> listCoups) {
 		this.listCoups = listCoups;
+		calculScore();
 	}
 
 	public int getScore() {
@@ -77,7 +80,7 @@ public class Partie {
 	}
 
 	public void setScore(int score) {
-		this.score = score;
+		calculScore();
 	}
 
 	public String toString() {
@@ -92,6 +95,12 @@ public class Partie {
 //		
 		rep += "score : " + this.score;
 		return rep;
+	}
+	
+	public void calculScore() {
+		this.score = 0;
+		for (Coup c : listCoups)
+			this.score += c.getPoints();
 	}
 	
 }
