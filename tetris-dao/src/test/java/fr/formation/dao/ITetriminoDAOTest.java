@@ -14,6 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.formation.config.AppConfig;
+import tetris.model.piece.RotationTetrimino;
 import tetris.model.piece.Tetrimino;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -30,14 +31,14 @@ public class ITetriminoDAOTest {
 
 	@Test
 	public void testFindById() {
-		assertNotNull(dao.findById(5));
+		assertNotNull(dao.findById(1));
 	}
 	
 	@Test
 	@Transactional
 	@Rollback(true)
 	public void testSave() {
-		Tetrimino t = new Tetrimino();
+		RotationTetrimino t = new RotationTetrimino();
 		t.setNom("toto");
 		dao.save(t);
 		assertNotEquals(0, t.getId());
@@ -47,27 +48,27 @@ public class ITetriminoDAOTest {
 	@Transactional
 	@Rollback(true)
 	public void testDelete() {
-		Optional<Tetrimino> opTetrimino = dao.findById(5);
-		Tetrimino t;
+		Optional<Tetrimino> opTetrimino = dao.findById(1);
+		RotationTetrimino t;
 		
 		assertTrue(opTetrimino.isPresent());
-		t = opTetrimino.get();
+		t = (RotationTetrimino) opTetrimino.get();
 		
 		assertNotNull(t);
 		
 		dao.delete(t);
-		assertFalse(dao.findById(5).isPresent());
+		assertFalse(dao.findById(1).isPresent());
 	}
 	
 	@Test
 	@Transactional
 	@Rollback(true)
 	public void testModifier() {
-		Optional<Tetrimino> opTetrimino = dao.findById(5);
-		Tetrimino t;
+		Optional<Tetrimino> opTetrimino = dao.findById(1);
+		RotationTetrimino t;
 		
 		assertTrue(opTetrimino.isPresent());
-		t = opTetrimino.get();
+		t = (RotationTetrimino) opTetrimino.get();
 		
 		assertNotNull(t);
 		
@@ -76,7 +77,7 @@ public class ITetriminoDAOTest {
 		t.setCouleur("toto");
 		dao.save(t);
 		
-		assertEquals("toto", dao.findById(5).get().getCouleur());
+		assertEquals("toto", dao.findById(1).get().getCouleur());
 	}
 	
 }

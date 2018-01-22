@@ -14,8 +14,8 @@ import tetris.model.jeu.*;
 @DiscriminatorValue("User")
 public class User extends Personne{
 	
-	@OneToMany(mappedBy="partie")
-	private static List<Partie> parties;
+	@OneToMany(mappedBy="user")
+	private List<Partie> parties;
 
 	public User() {
 	}
