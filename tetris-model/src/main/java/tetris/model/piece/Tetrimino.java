@@ -10,7 +10,7 @@ import tetris.model.jeu.Coup;
 @Entity
 @Table(name="tetrimino")
 @Inheritance(strategy=InheritanceType.JOINED)
-public class Tetrimino implements Serializable {
+public abstract class Tetrimino implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,25 +18,16 @@ public class Tetrimino implements Serializable {
 	private int id;
 	
 	@Column(name="TET_NOM")
-	private String nom;
+	protected String nom;
 	
 	@Column(name="TET_COULEUR")
-	private String couleur;
+	protected String couleur;
 	
 	@Column(name="TET_STR")
 	protected String str; // la piece en format String
 	
 	@OneToMany(mappedBy="tetrimino")
 	private List<Coup> listCoups;
-	
-	public Tetrimino() {
-	}
-	
-	public Tetrimino(String nom, String couleur, String str) {
-		this.nom = nom;
-		this.couleur = couleur;
-		this.str = str;
-	}
 	
 	public String[][] stringToArray(String myStr) {
 	
