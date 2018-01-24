@@ -1,5 +1,6 @@
 
 h1 {
+	top: 100px;
 	text-align: center;
 	font-size: 48px;
 	color: purple;
@@ -21,8 +22,8 @@ body {
 
 
 nav {
-	position: sticky;
-	bottom: 0px;
+	position: fixed;
+	top: 0px;
 	left: 0px;
 	background-color: #99d17d;
 }
@@ -34,4 +35,16 @@ nav > ul {
 nav > ul > li {
 	display: inline-block;
 	width: 300px;
+}
+
+nav a {
+	color : initial;
+	text-decoration: none;
+	position: relative;
+}
+
+a:hover { 
+	color : blue;
+	transition-property: color;
+	transition-duration: 0.5s;
 }
