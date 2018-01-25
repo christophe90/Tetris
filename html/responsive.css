@@ -1,0 +1,7 @@
+@media screen and (max-width: 1280px) {
+	
+	/*plateau*/
+	.column.left {
+		width: 0%;
+	}
+}
