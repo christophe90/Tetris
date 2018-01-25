@@ -15,30 +15,34 @@
 
 <h2>Inscription au jeu Tetris</h2>
 
-<div>
-	<form>
+<section>
 
-		<div>
-			<label for="login">Identifiant</label>
-			<input type="text" id="login" name="login">
-		</div>
-
-		<div>
-			<label for="password">Mot de passe</label>
-			<input type="text" id="password" name="password">
-		</div>
-		
-		<div>
-			<label for="password">Ressaisissez le mot de passe</label>
-			<input type="text" id="password" name="password">
-		</div>
-
+	<div>
 		<form>
-			<button formaction="accueil.html">Créer un compte</button>
-		</form>
+
+			<div name="id">
+				<input type="text" id="login" name="login">
+				<label for="login">Identifiant</label>
+			</div>
+
+			<div name="pw">
+				<input type="text" id="password" name="password">
+				<label for="password">Mot de passe</label>
+			</div>
 		
-  </form>
-</div>
+			<div name="pw2">
+				<input type="text" id="password" name="password">
+				<label for="password">Ressaisissez le mot de passe</label>
+			</div>
+
+			<form>
+				<button formaction="accueil.html">Créer un compte</button>
+			</form>
+		
+		</form>
+	</div>
+
+</section>
 
 <footer>
 	Copyright tetris.fr
