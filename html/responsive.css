@@ -103,6 +103,17 @@
 		font-size: 25px;
 	}
 	
+	/*scores*/
+	
+	table {
+		font-size: 15px;
+		width: 100%;
+	}
+
+	table, th, td {
+		height: 15px;
+	}
+	
 	/*plateau*/
 	
 	.column {
