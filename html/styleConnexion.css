@@ -36,10 +36,9 @@ body {
 	background-color: #d2ecf6;
 }
 
-section {
+section[name=connexion] {
 	position: relative;
 	margin-top: 90px;
-	width: 500%;
 }
 
 div > form{
@@ -57,7 +56,7 @@ label[name=typecomptelabel] {
 	position: relative;
 	float: left;
 	font-weight: bolder;
-	width: 200px;
+	width: 260px;
 }
 
 input[type=radio]{
@@ -108,7 +107,7 @@ input[type=radio]:checked + label::after{
 
 button {
 	position: relative;
-	top: 50px;
+	top: 70px;
 	color: white;
 	background-color: #b70000;
 	border-radius: 10px;
@@ -126,24 +125,20 @@ button:hover {
 
 button:active {
 	transform: scale(0.8);
-	transition: all 0.2s ease;
+	transition: all 0.1s ease;
 }
 
 /*----------------------------------------------------- position des différents champs du formulaire-------------------------------------------------------------------*/
 
-div[name=id] {
+div[name=id], div[name=pw2]{
 	position: relative;
 	top: 50px;
 }
 
-div[name=pw] {
-	position: relative;
-	top: 50px;
-}
 
 input[type=text] + label {
+
 	font-weight: bolder;
 	float: left;
-	width: 150px;
-	transition: all 1s ease;
+	width: 230px;
 }
