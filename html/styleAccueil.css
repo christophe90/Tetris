@@ -73,7 +73,6 @@ section {
 div[name=menuaccueil] > ul {
 		font-size: 40px;
 		text-align: left;
-		width : 5000px;
 		height : 25px;
 }
 
@@ -93,10 +92,14 @@ div[name=menuaccueil] > ul > li  > a:hover {
 	transition-duration: 2s;
 }
 
-div[name="score"] > table {
+table {
+	font-size: 30px;
+	font-weight: bolder;
     border-collapse: collapse;
+	width: 200%;
 }
 
-div[name="score"] > table, th, td {
-    border: 1px solid black;
+table, td {
+	height: 50px;
+	text-align: right;
 }
