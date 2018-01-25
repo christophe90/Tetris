@@ -15,6 +15,17 @@
 		width: 170px;
 	}
 	
+	/*scores*/
+	
+	table {
+		font-size: 20px;
+		width: 200%;
+	}
+
+	table, th, td {
+		height: 30px;
+	}
+	
 	/*plateau*/
 	
 	.column {
