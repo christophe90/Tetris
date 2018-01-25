@@ -1,0 +1,140 @@
+
+h1 {
+	position: relative;
+	top: 15px;
+	text-align: left;
+	font-size: 65px;
+	color: purple;
+	font-weight: bolder;
+}
+
+h2 {
+	position: relative;
+	margin-top: 0px;
+	text-align: left;
+	font-size: 45px;
+	color: purple;
+	font-weight: bolder;
+}
+
+footer {
+	position: fixed;
+	bottom:0px;
+	left: 0px;
+	background-color: #99d89a;
+	width: 100%;
+	height: 20px;
+}
+
+body {
+	margin-left: 50px;
+	font-family : calibri;
+	background: url(cathedrale.jpg) fixed no-repeat;
+	background-position: 90% 90%;
+	background-color: #d2ecf6;
+}
+
+section {
+	position: relative;
+	margin-top: 90px;
+	width: 500%;
+}
+
+div > form{
+	position: relative;
+}
+
+div[name=inscription] {
+	position: relative;
+	margin-top: 100px;
+}
+
+/*----------------------------------------- pour la selection du type de joueur-------------------------------*/
+
+label[name=typecomptelabel] {
+	position: relative;
+	float: left;
+	width: 160px;
+}
+
+input[type=radio]{
+	display: none;
+}
+	
+input[type=radio] + label {
+	position: relative;
+	margin-right: 50px;
+}
+
+input[type=radio] + label::before {
+	content: "";
+	position: absolute;
+	left: -30px;
+	width: 20px;
+	height: 20px;
+	border: solid 1px #000;
+	transform: rotate(45deg);
+}
+
+input[type=radio] + label::after {
+	content: "";
+	position: absolute;
+	left: -24px;
+	top: 5px;
+	width: 10px;
+	height: 10px;
+	background: red;
+	border-radius: 50%;
+	transform: scale(0);
+}
+	
+input[type=radio]:checked + label::after{
+	animation: monanimation2 1s;
+	transform: scale(1);
+}
+
+@keyframes monanimation2 {
+0% { transform: scale(0);}
+20% { transform: scale(1);}
+40% { transform: scale(0);}
+60% { transform: scale(1);}
+80% { transform: scale(0);}
+100% { transform: scale(1);}
+}
+
+
+/*--------------------------------------------------- s'identifier ---------------------------------------------------------*/
+
+input[type=submit] {
+	color: white;
+	background-color: #b70000;
+	border-radius: 10px;
+    width: 200px;
+    height: 50px;
+	
+}
+
+input[type=submit]:hover {
+	background-color: #ff0000;
+	box-shadow: 10px 5px 5px black;
+	transition-property: box-shadow background-color;
+	transition-duration: 1s;
+	
+}
+
+input[type=submit]:hover {
+	transition: all 2s ease;
+	transform: scale(5) rotate(180deg);
+/*	animation: monanimation 2s;
+	animation-iteration-count: infinite;*/
+}
+
+div[name=id] {
+	position: relative;
+	top: 50px;
+}
+
+div[name=pw] {
+	position: relative;
+	top: 50px;
+}
