@@ -81,11 +81,11 @@
 	
 	h1 {
 		top: 10px;
-		font-size: 60px;
+		font-size: 48px;
 	}
 
 	h2 {
-		font-size: 40px;
+		font-size: 20px;
 	}
 
 	body {
@@ -108,6 +108,7 @@
 	}
 	
 	/*page accueil*/
+	
 	
 	div[name=menuaccueil] > ul {
 		font-size: 25px;
@@ -178,9 +179,8 @@
 	
 	/* page connexion */
 	
-	section {
+	.connexion {
 		left:-10px;
-		margin-top: 10px;
 		width: 110%;
 	}
 	
@@ -189,15 +189,15 @@
 	}
 
 	label[name=typecomptelabel] {
-		width: 100px;
+		width: 150px;
 	}
 		
 	input[type=radio] + label {
-		margin-right: 30px;
+		margin-right: 17px;
 	}
 
 	input[type=radio] + label::before {
-		left: -15px;
+		left: -16px;
 		width: 10px;
 		height: 10px;
 		top: 3px;
@@ -215,16 +215,8 @@
 		width: 150px;
 		height: 30px;
 	}
-	
-	div[name=id] {
-		top: 30px;
-	}
 
-	div[name=pw] {
-		top: 30px;
-	}
-
-	input[type=text] + label {
+	label[name="text"] {
 		width: 100px;
 	}
 }
