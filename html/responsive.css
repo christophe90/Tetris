@@ -81,11 +81,11 @@
 	
 	h1 {
 		top: 10px;
-		font-size: 60px;
+		font-size: 48px;
 	}
 
 	h2 {
-		font-size: 40px;
+		font-size: 20px;
 	}
 
 	body {
@@ -108,6 +108,7 @@
 	}
 	
 	/*page accueil*/
+	
 	
 	div[name=menuaccueil] > ul {
 		font-size: 25px;
@@ -178,9 +179,8 @@
 	
 	/* page connexion */
 	
-	section {
+	.connexion {
 		left:-10px;
-		margin-top: 10px;
 		width: 110%;
 	}
 	
@@ -193,7 +193,7 @@
 	}
 		
 	input[type=radio] + label {
-		margin-right: 30px;
+		margin-right: 10px;
 	}
 
 	input[type=radio] + label::before {
@@ -216,11 +216,7 @@
 		height: 30px;
 	}
 	
-	div[name=id] {
-		top: 30px;
-	}
-
-	div[name=pw] {
+	div[name=id], div[name=pw2]{
 		top: 30px;
 	}
 
