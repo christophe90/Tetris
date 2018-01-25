@@ -17,16 +17,6 @@ h2 {
 	font-weight: bolder;
 }
 
-header[name=connexion] > h1{
-
-	position: fixed;
-	top: 10px;
-	text-align: keft;
-	font-size: 48px;
-	color: purple;
-	font-weight: bolder;
-}
-
 footer {
 	position: fixed;
 	bottom:0px;
@@ -101,4 +91,12 @@ div[name=menuaccueil] > ul > li  > a:hover {
 	color : blue;
 	transition-property: color;
 	transition-duration: 2s;
+}
+
+div[name="score"] > table {
+    border-collapse: collapse;
+}
+
+div[name="score"] > table, th, td {
+    border: 1px solid black;
 }
