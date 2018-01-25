@@ -1,7 +1,8 @@
 .column {
 	position: relative;
     float: left;
-    padding: 10px;
+    padding: 5px;
+	top: 25px;
 }
 
 .column.left {
@@ -30,7 +31,6 @@ section[class="plateau"]
     width: 400px;
     background-color: #e2e2e0;
 	border: 3px solid #0c0a03;
-	
 }
 
 section[class="recap"]

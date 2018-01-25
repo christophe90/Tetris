@@ -1,0 +1,174 @@
+@media screen and (max-width: 600px) {
+
+	p1c1 {
+		left: 20px;
+		top: 100px;
+		width: 19px;
+		height: 19px;
+	}
+
+	p1c2 {
+		left: 40px;
+		top: 100px;
+		width: 19px;
+		height: 19px;
+	}
+
+	p1c3 {
+		left: 60px;
+		top: 100px;
+		width: 19px;
+		height: 19px;
+	}
+
+	p1c4 {
+		left: 40px;
+		top: 80px;
+		width: 19px;
+		height: 19px;
+	}
+
+	p2c1 {
+		left: 60px;
+		top: 280px;
+		width: 19px;
+		height: 19px;
+	}
+
+	p2c2 {
+		left: 80px;
+		top: 280px;
+		width: 19px;
+		height: 19px;
+	}
+
+	p2c3 {
+		left: 100px;
+		top: 280px;
+		width: 19px;
+		height: 19px;
+	}
+
+	p2c4 {
+		left: 120px;
+		top: 280px;
+		width: 19px;
+		height: 19px;
+	}
+	
+	p3c1 {
+		left: 20px;
+		top: 25px;
+		width: 9px;
+		height: 9px;
+	}
+
+	p3c2 {
+		left: 30px;
+		top: 25px;
+		width: 9px;
+		height: 9px;
+	}
+
+	p3c3 {
+		left: 30px;
+		top: 35px;
+		width: 9px;
+		height: 9px;
+	}
+
+	p3c4 {
+		left: 40px;
+		top: 35px;
+		width: 9px;
+		height: 9px;
+	}
+
+	p4c1 {
+		left: 160px;
+		top: 280px;
+		width: 19px;
+		height: 19px;
+	}
+
+	p4c2 {
+		left: 180px;
+		top: 280px;
+		width: 19px;
+		height: 19px;
+	}
+
+	p4c3 {
+		left: 180px;
+		top: 260px;
+		width: 19px;
+		height: 19px;
+	}
+
+	p4c4 {
+		left: 180px;
+		top: 240px;
+		width: 19px;
+		height: 19px;
+	}
+
+	p5c1 {
+		left: 140px;
+		top: 260px;
+		width: 19px;
+		height: 19px;
+	}
+
+	p5c2 {
+		left: 160px;
+		top: 260px;
+		width: 19px;
+		height: 19px;
+	}
+
+	p5c3 {
+		left: 140px;
+		top: 240px;
+		width: 19px;
+		height: 19px;
+	}
+
+	p5c4 {
+		left: 160px;
+		top: 240px;
+		width: 19px;
+		height: 19px;
+	}
+
+}
+
+@media screen and (max-width: 1280px) and (min-width: 600px) {
+
+	p3c1 {
+		left: 40px;
+		top: 50px;
+		width: 19px;
+		height: 19px;
+	}
+
+	p3c2 {
+		left: 60px;
+		top: 50px;
+		width: 19px;
+		height: 19px;
+	}
+
+	p3c3 {
+		left: 60px;
+		top: 70px;
+		width: 19px;
+		height: 19px;
+	}
+
+	p3c4 {
+		left: 80px;
+		top: 70px;
+		width: 19px;
+		height: 19px;
+	}
+}
