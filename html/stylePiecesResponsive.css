@@ -57,28 +57,28 @@
 	}
 	
 	p3c1 {
-		left: 20px;
+		left: 25px;
 		top: 25px;
 		width: 9px;
 		height: 9px;
 	}
 
 	p3c2 {
-		left: 30px;
+		left: 35px;
 		top: 25px;
 		width: 9px;
 		height: 9px;
 	}
 
 	p3c3 {
-		left: 30px;
+		left: 35px;
 		top: 35px;
 		width: 9px;
 		height: 9px;
 	}
 
 	p3c4 {
-		left: 40px;
+		left: 45px;
 		top: 35px;
 		width: 9px;
 		height: 9px;
@@ -142,7 +142,7 @@
 
 }
 
-@media screen and (max-width: 1280px) and (min-width: 600px) {
+@media screen and (max-width: 1280px) and (min-width: 601px) {
 
 	p3c1 {
 		left: 35px;
