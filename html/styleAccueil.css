@@ -2,7 +2,7 @@
 h1 {
 	position: relative;
 	top: 70px;
-	text-align: center;
+	text-align: keft;
 	font-size: 48px;
 	color: purple;
 	font-weight: bolder;
@@ -11,7 +11,7 @@ h1 {
 h2 {
 	position: relative;
 	top: 40px;
-	text-align: center;
+	text-align: left;
 	font-size: 20px;
 	color: purple;
 	font-weight: bolder;
@@ -19,9 +19,10 @@ h2 {
 
 body {
 	font-family : calibri;
-/*	background-image: url(EcranAccueilTetris.jpg) */
+	background: url(cathedrale.jpg) fixed no-repeat;
+	background-position: 90% 90%;
+	background-color: #d2ecf6;
 }
-
 
 nav {
 	position: fixed;
@@ -52,6 +53,12 @@ a:hover {
 	color : blue;
 	transition-property: color;
 	transition-duration: 0.5s;
+}
+
+section {
+	position: absolute;
+	margin-top: 40px;
+	
 }
 
 footer {
