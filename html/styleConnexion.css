@@ -103,18 +103,17 @@ input[type=radio]:checked + label::after{
 }
 
 
-/*--------------------------------------------------- s'identifier ---------------------------------------------------------*/
+/*--------------------------------------------------- bouton s'identifier ---------------------------------------------------------*/
 
-input[type=submit] {
+button {
 	color: white;
 	background-color: #b70000;
 	border-radius: 10px;
     width: 200px;
     height: 50px;
-	
 }
 
-input[type=submit]:hover {
+button {
 	background-color: #ff0000;
 	box-shadow: 10px 5px 5px black;
 	transition-property: box-shadow background-color;
@@ -122,12 +121,13 @@ input[type=submit]:hover {
 	
 }
 
-input[type=submit]:hover {
+button:hover {
 	transition: all 2s ease;
-	transform: scale(5) rotate(180deg);
-/*	animation: monanimation 2s;
-	animation-iteration-count: infinite;*/
 }
+
+button:active {}
+
+/*------------------------------------------------------------------------------------------------------------------------*/
 
 div[name=id] {
 	position: relative;
