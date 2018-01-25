@@ -1,0 +1,10 @@
+
+section[class="plateau"]
+{
+	position: relative;
+    left: 30%;
+    height: 600px;
+    width: 400px;
+    background-color: #e8d699;
+	border: 3px solid #0c0a03;
+}
