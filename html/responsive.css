@@ -78,6 +78,16 @@
 @media screen and (max-width: 600px) {
 	
 	/*accueil*/
+	
+	h1 {
+		top: 10px;
+		font-size: 60px;
+	}
+
+	h2 {
+		font-size: 40px;
+	}
+
 	body {
 		background-size: 25%;
 		background-position: 92% 92%;
@@ -165,5 +175,56 @@
 	{
 		font-size: 7pt;
 	}
+	
+	/* page connexion */
+	
+	section {
+		left:-10px;
+		margin-top: 10px;
+		width: 110%;
+	}
+	
+	div[name=inscription] {
+		margin-top: 60px;
+	}
 
+	label[name=typecomptelabel] {
+		width: 100px;
+	}
+		
+	input[type=radio] + label {
+		margin-right: 30px;
+	}
+
+	input[type=radio] + label::before {
+		left: -15px;
+		width: 10px;
+		height: 10px;
+		top: 3px;
+	}
+
+	input[type=radio] + label::after {
+		left: -12px;
+		top: 6px;
+		width: 5px;
+		height: 5px;
+	}
+
+	button {
+		top: 40px;
+		width: 150px;
+		height: 30px;
+	}
+	
+	div[name=id] {
+		top: 30px;
+	}
+
+	div[name=pw] {
+		top: 30px;
+	}
+
+	input[type=text] + label {
+		width: 100px;
+	}
 }
