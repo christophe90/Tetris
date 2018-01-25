@@ -4,7 +4,7 @@
 		<title>Bienvenue sur Tetris, le tetris pas comme les autres !</title>
 		<meta name="description" content="Jouer ici au tetris">
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="styleaccueil.css">
+		<link rel="stylesheet" href="styleConnexion.css">
 	</head>
 <body>
 
@@ -15,26 +15,34 @@
 <h2>Connexion au jeu Tetris</h2>
 
 <section>
-	<form>
-
-		<div>
-			<label for="login">Identifiant</label>
-			<input type="text" id="login" name="login">
-		</div>
-
-		<div>
-			<label for="password">Mot de passe</label>
-			<input type="text" id="password" name="password">
-		</div>
-		
+	<div>
 		<form>
-			<button formaction="accueil.html">S'identifier</button>
+			<div name="typecompte">
+				<label name="typecomptelabel" >Type de compte : </label>
+				<input id="tjoueur" type="radio" name="typecompte" value="joueur"> <label for="tjoueur">Joueur</label>
+				<input id="tadmin" type="radio" name="typecompte" value="administrateur"> <label for="tadmin">Administrateur</label>
+			</div>
+			<div name="id">
+				<label for="login">Identifiant</label>
+				<input type="text" id="login" name="login">
+			</div name="id">
+
+			<div>
+				<label for="password">Mot de passe</label>
+				<input type="text" id="password" name="password">
+			</div>
+		
+			<form>
+				<button formaction="accueil.html">S'identifier</button>
+			</form>
 		</form>
-  </form>
+	</div>
+
+	<div name="inscription">
+		<p>Vous ne disposez pas encore d'un compte ? <a href="inscription.html">Créez-en un !</a> </p>
+	</div>
+
 </section>
-
-<p>Vous ne disposez pas encore d'un compte ? <a href="inscription.html">Créez-en un !</a> </p>
-
 
 <footer>
 	Copyright tetris.fr
