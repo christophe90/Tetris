@@ -137,7 +137,7 @@ div[name=id], div[name=pw], div[name=pw2]{
 }
 
 
-input[type=text] + label {
+label[name="text"] {
 	font-weight: bolder;
 	float: left;
 	width: 230px;

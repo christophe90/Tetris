@@ -189,15 +189,15 @@
 	}
 
 	label[name=typecomptelabel] {
-		width: 100px;
+		width: 150px;
 	}
 		
 	input[type=radio] + label {
-		margin-right: 10px;
+		margin-right: 17px;
 	}
 
 	input[type=radio] + label::before {
-		left: -15px;
+		left: -16px;
 		width: 10px;
 		height: 10px;
 		top: 3px;
@@ -215,12 +215,8 @@
 		width: 150px;
 		height: 30px;
 	}
-	
-	div[name=id], div[name=pw2]{
-		top: 30px;
-	}
 
-	input[type=text] + label {
+	label[name="text"] {
 		width: 100px;
 	}
 }
