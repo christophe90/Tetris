@@ -34,6 +34,8 @@ body {
 	background-color: #d2ecf6;
 }
 
+/* -------------------------- menu bandeau -----------------------------------*/
+
 nav {
 	position: fixed;
 	top: 0px;
@@ -65,6 +67,17 @@ nav a:hover {
 	transition-duration: 0.5s;
 }
 
+nav span {
+	font-weight: bolder;
+}
+	
+nav span::before {
+	float: left;
+	content: url("icone.png");
+}
+
+/*--------------------- menu page d'accueil--------------------------------*/
+
 section {
 	position: absolute;
 	margin-top: 70px;
@@ -75,6 +88,7 @@ div[name=menuaccueil] > ul {
 	font-size: 40px;
 	text-align: left;
 	height : 25px;
+	margin-left: 25px;
 }
 
 div[name=menuaccueil] > ul > li {
@@ -87,11 +101,63 @@ div[name=menuaccueil] > ul > li  > a {
 	position: relative;
 }
 
-div[name=menuaccueil] > ul > li  > a:hover { 
+div[name=menuaccueil] > ul > li  > a[href="scores.html"]:hover { 
 	color : blue;
 	transition-property: color;
-	transition-duration: 2s;
+	transition-duration: 0.5s;
 }
+
+div[name=menuaccueil] > ul > li:hover  > a[href="scores.html"]:before {
+	content: "";
+	position: absolute;
+	left: -50px;
+	top: 10px;
+	width: 39px;
+	height: 39px;
+	background-color: blue;
+	border-radius: 8px;
+}
+
+div[name=menuaccueil] > ul > li  > a[href="plateau.html"]:hover { 
+	color : red;
+	transition-property: color;
+	transition-duration: 0.5s;
+}
+
+div[name=menuaccueil] > ul > li:hover  > a[href="plateau.html"]::before {
+	content: "";
+	position: absolute;
+	left: -50px;
+	top: 10px;
+	width: 39px;
+	height: 39px;
+	background-color: red;
+	border-radius: 8px;
+}
+
+div[name=menuaccueil] > ul > li  > a[href="connexion.html"]:hover { 
+	color : green;
+	transition-property: color;
+	transition-duration: 0.5s;
+}
+
+div[name=menuaccueil] > ul > li:hover  > a[href="connexion.html"]::before {
+	content: "";
+	position: absolute;
+	left: -50px;
+	top: 10px;
+	width: 39px;
+	height: 39px;
+	background-color: green;
+	border-radius: 8px;
+}
+
+div[name=menuaccueil] > ul > li:active  > a::before {
+	transition: all 0.5s ease;
+	display: none;
+}
+
+/*------------------------------------------------------------------------*/
 
 table {
 	font-size: 30px;
