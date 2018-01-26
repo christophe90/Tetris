@@ -15,6 +15,10 @@
 		width: 170px;
 	}
 	
+	li[name=pseudo] {
+		display: none;
+	}
+	
 	/*scores*/
 	
 	table {
@@ -107,11 +111,20 @@
 		text-align: center;
 	}
 	
+	li[name=pseudo] {
+	display: none;
+	}
+	
 	/*page accueil*/
 	
 	
 	div[name=menuaccueil] > ul {
 		font-size: 25px;
+		margin-left: -15px;
+	}
+	
+	div[name=menuaccueil] > ul > li:hover  > a::before {
+		display: none;
 	}
 	
 	/*scores*/
