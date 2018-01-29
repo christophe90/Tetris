@@ -7,3 +7,43 @@ section[class="plateau"]
     background-color: #e2e2e0;
 	border: 3px solid #0c0a03;
 }
+
+p1c1 {
+	position: absolute;
+	left: 40px;
+	top: 0px;
+	width: 39px;
+	height: 39px;
+	background-color: #ffe62d;
+	border-radius: 8px;
+}
+
+p1c2 {
+	position: absolute;
+	left: 0px;
+	top: 40px;
+	width: 39px;
+	height: 39px;
+	background-color: #ffe62d;
+	border-radius: 8px;
+}
+
+p1c3 {
+	position: absolute;
+	left: 40px;
+	top: 40px;
+	width: 39px;
+	height: 39px;
+	background-color: #ffe62d;
+	border-radius: 8px;
+}
+
+p1c4 {
+	position: absolute;
+	left: 80px;
+	top: 40px;
+	width: 39px;
+	height: 39px;
+	background-color: #ffe62d;
+	border-radius: 8px;
+}
