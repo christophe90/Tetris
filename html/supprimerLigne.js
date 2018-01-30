@@ -1,12 +1,25 @@
 
-/*------------------------------------------------ Fonction qui vérifie si il y a une ligne à supprimer, et la supprime le cas échéant -----------------------------------*/
+/*------------------------------------------------------------------------- Fonctions ----------------------------------------------------------------------*/
 
-// Prend une matrice en paramètre et la ligne à vérifier et supprimer et retrourne une matrice
+// verifie toutes les lignes du plateau et supprime toutes les lignes complètes
+function verifSupprimerPlusieursLigne(plateau) {
+	
+	var plateauFinal = plateau
+	
+	for (let i=plateau.length-1; i>=0; i--) {
+		while (verifLigneComplete(plateauFinal, i)) {
+			var nouveauPlateau =  verifSupprimerLigne(plateauFinal, i);
+			PlateauFinal = nouveauPlateau;
+		}
+	}
+	
+	return plateauFinal;
+}
+
+// Fonction qui vérifie pour une ligne donnee (numérotées de 0 à 14) si elle est complete, et la supprime le cas échéant
 function verifSupprimerLigne(plateau, numeroLigne) {
 	
-	console.log(plateau[4][1]);
-	
-	var count=0;
+	// Initialisation du tableau plateauTransforme
 	
 	var plateauTransforme = new Array();
 
@@ -23,22 +36,33 @@ function verifSupprimerLigne(plateau, numeroLigne) {
 		}
 	}
 	
-	for (let i=0; i<plateau.length; i++)
-		if (plateau[i][numeroLigne]==0) {
-			count++;
-		}
+	var verif = verifLigneComplete(plateau, numeroLigne);
 	
-	if (count==0)
-		for (let i=0; i<plateau.length; i++)
-			for (let j=numeroLigne; j<plateau[i].length; j++) {
-				if (j>=plateau[i].length-1)
+	plateauTransforme = plateau;
+	
+	if (verif==true)
+		for (let i=numeroLigne; i>=0; i--)
+			for (let j=0; j<plateau[i].length; j++) {
+				if (i == 0)
 					plateauTransforme[i][j] = 0;
 				else
-					plateauTransforme[i][j] = plateau[i][j+1];
+					plateauTransforme[i][j] = plateau[i-1][j];
 			}
-	else
-		plateauTransforme = plateau;
-	
+
 	return plateauTransforme;
+}
+
+// Fonction qui vérifie pour une ligne donnée si elle est complètes
+function verifLigneComplete(plateau, myNumeroLigne) {
+	var count=0;
 	
+	for (let j=0; j<plateau[0].length; j++)
+		if (plateau[myNumeroLigne][j]==0) {
+			count++;
+		}
+		
+	if (count==0)
+		return true;
+	else
+		return false;
 }
