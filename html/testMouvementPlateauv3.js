@@ -14,7 +14,7 @@
 			topTetri: 0, // hauteur du tetrimino dans le plateau (0 =  haut du plateau)
 			leftTetri: 0 // position horizontale du tetrimino dans le plateau
 		};
-	var rotations;
+	var collision = false;
 
 	// Creation du plateau
 
@@ -51,7 +51,7 @@
 		afficherPlateauCouleur(plateau.matrice);
 		
 		// Lancement du mouvement
-		mouvement = setInterval(function(){ mouvementPiece(tetrimino, plateau)}, 1000);
+		mouvement = setInterval(function(){ mouvementPiece(tetrimino, plateau)}, 3000);
 		return mouvement;
 		
 	}
@@ -126,16 +126,28 @@
 	// Descente du tetrimino
 
 	function descentePiece(plateau, tetrimino) {
+		
 		if (tetrimino.topTetri + tetrimino.hauteur < plateau.hauteur) {
 			
-			// mise à zero de l'ancien emplacement du tetrimino
-			emplacementZero(plateau, tetrimino)
+			collision = collisionBas(plateau, tetrimino);
+			console.log(collision);
 			
-			// modif hauteur du tetrimino
-			tetrimino.topTetri += 1;
-			
-			// placement du tetrimino
-			placementTetrimino(plateau, tetrimino);
+			if (collision == false) {
+				
+				// mise à zero de l'ancien emplacement du tetrimino
+				emplacementZero(plateau, tetrimino)
+				
+				// modif hauteur du tetrimino
+				tetrimino.topTetri += 1;
+				
+				// placement du tetrimino
+				placementTetrimino(plateau, tetrimino);
+			}
+			else {
+				// charge la piece suivante
+				tetrimino.id = ((tetrimino.id + 1) % 3) + 1;
+				creationTetrimino(tetrimino);
+			}
 		}
 		else {
 			// charge la piece suivante
@@ -143,6 +155,7 @@
 			creationTetrimino(tetrimino);
 		}
 		console.log(plateau.matrice);
+		collision = false;
 		return plateau, tetrimino;
 	}
 	
@@ -227,6 +240,19 @@
 		
 		console.log(plateau.matrice);
 		return plateau, tetrimino;
+	}
+	
+	// Gestion Collisions
+	
+	function collisionBas(plateau, tetrimino) {
+		var emplacement2 = Array();
+		for (var j=0; j<=tetrimino.largeur; j++) {
+			emplacement2[j] = plateau.matrice[tetrimino.topTetri+tetrimino.hauteur+1][j+tetrimino.leftTetri];
+			if (emplacement2[j]>0 && tetrimino.matrice[tetrimino.hauteur][j]>0) {
+				collision = true;
+			}
+		}
+		return collision;
 	}
 
 })();
