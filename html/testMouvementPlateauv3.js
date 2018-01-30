@@ -4,7 +4,16 @@
 	// variables
 	var clavier = [ [37, 38, 39, 40], [false, false, false, false] ];
 	var mouvement;
-	var tetrimino;
+	var tetrimino = {
+			id : 1,
+			matrice : new Array(),
+			rotations : new Array(),
+			rot : 0,
+			hauteur: 0,
+			largeur: 0,
+			topTetri: 0, // hauteur du tetrimino dans le plateau (0 =  haut du plateau)
+			leftTetri: 0 // position horizontale du tetrimino dans le plateau
+		};
 	var rotations;
 
 	// Creation du plateau
@@ -32,7 +41,7 @@
 	function depart() {
 		
 		// Creation d'un premier tetrimino
-		tetrimino = creationTetrimino();
+		tetrimino = creationTetrimino(tetrimino);
 		console.log(tetrimino.matrice);
 		
 		// Placememt du tetrimino dans le plateau en début de descente 
@@ -42,29 +51,17 @@
 		afficherPlateauCouleur(plateau.matrice);
 		
 		// Lancement du mouvement
-		mouvement = setInterval(function(){ mouvementPiece(tetrimino, plateau)}, 3000);
+		mouvement = setInterval(function(){ mouvementPiece(tetrimino, plateau)}, 1000);
 		return mouvement;
 		
 	}
 	
-	function creationTetrimino() {
+	function creationTetrimino(tetrimino) {
 		
-		tetrimino = {
-			matrice: new Array(),
-			rotations : new Array(),
-			rot : 0,
-			hauteur: 0,
-			largeur: 0,
-			topTetri: 0, // hauteur du tetrimino dans le plateau (0 =  haut du plateau)
-			leftTetri: 0 // position horizontale du tetrimino dans le plateau
-		};
-		
-		tetrimino.rotations =	[ [[0,1,0], [1,1,1]],
-						[[1,0], [1,1], [1,0]],
-						[[1,1,1], [0,1,0]],
-						[[0,1], [1,1], [0,1]] ];
-					
+		tetrimino.rotations = tetri(tetrimino.id);
 		tetrimino = propTetrimino(tetrimino);
+		tetrimino.leftTetri = 0;
+		tetrimino.topTetri = 0;
 		
 		return tetrimino;
 	}
@@ -141,8 +138,9 @@
 			placementTetrimino(plateau, tetrimino);
 		}
 		else {
-			clearInterval(mouvement);
-			console.log("fin de partie"); // quand la premiere piece est en bas, arret. A modifier apres
+			// charge la piece suivante
+			tetrimino.id = ((tetrimino.id + 1) % 3) + 1;
+			creationTetrimino(tetrimino);
 		}
 		console.log(plateau.matrice);
 		return plateau, tetrimino;
@@ -211,16 +209,14 @@
 	// Rotation du tetrimino
 	
 	function rotationPiece(plateau, tetrimino) {
-		// vérifier que avec la rotation, ça ne dépasse pas du bord
-		
-		if (tetrimino.hauteur > tetrimino.largeur && tetrimino.largeur + tetrimino.leftTetri == plateau.largeur) // gestion piece bord droit
-			tetrimino.leftTetri -=1 ;
-			
-		if (tetrimino.hauteur < tetrimino.largeur && tetrimino.topTetri + tetrimino.hauteur == plateau.hauteur) // gestion bord inf
-			tetrimino.topTetri -= 1;
-		
 		// mise à zero de l'ancien emplacement du tetrimino
 		emplacementZero(plateau, tetrimino);
+		
+		if (tetrimino.hauteur > tetrimino.largeur && tetrimino.largeur + tetrimino.leftTetri == plateau.largeur) // gestion piece bord droit
+			tetrimino.leftTetri -=  tetrimino.hauteur - tetrimino.largeur;
+			
+		if (tetrimino.hauteur < tetrimino.largeur && tetrimino.topTetri + tetrimino.hauteur == plateau.hauteur) // gestion bord inf
+			tetrimino.topTetri -= tetrimino.largeur - tetrimino.hauteur;
 		
 		// modif du tetrimino
 		tetrimino.rot = (tetrimino.rot + 1) % 4;
