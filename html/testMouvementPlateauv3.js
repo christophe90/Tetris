@@ -108,7 +108,7 @@
 	// Descente du tetrimino
 
 	function descentePiece(plateau, tetrimino) {
-		if (tetrimino.topTetri + tetrimino.hauteur <= plateau.hauteur) {
+		if (tetrimino.topTetri + tetrimino.hauteur < plateau.hauteur) {
 			
 			// mise à zero de l'ancien emplacement du tetrimino
 			emplacementZero(plateau, tetrimino)
@@ -149,7 +149,7 @@
 
 	// Piece à droite
 
-	function pieceDroite(plateau, tetrimino) {
+	function pieceDroite(tetrimino, plateau) {
 		if (tetrimino.leftTetri + 1 + tetrimino.largeur <= plateau.largeur) {
 			// mise à zero de l'ancien emplacement du tetrimino
 			emplacementZero(plateau, tetrimino)
@@ -169,7 +169,7 @@
 
 	// Piece à gauche
 
-	function pieceGauche(plateau, tetrimino) {
+	function pieceGauche(tetrimino, plateau) {
 		if (tetrimino.leftTetri - 1 >= 0) {
 			// mise à zero de l'ancien emplacement du tetrimino
 			emplacementZero(plateau, tetrimino)
