@@ -4,6 +4,8 @@
 	// variables
 	var clavier = [ [37, 38, 39, 40], [false, false, false, false] ];
 	var mouvement;
+	var tetrimino;
+	var rotations;
 
 	// Creation du plateau
 
@@ -28,24 +30,13 @@
 	//alert(plateau);
 	
 	function depart() {
-		// Creation d'un premier tetrimino
-		var tetrimino ={
-			matrice: new Array(),
-			hauteur: 1,
-			largeur: 2,
-			topTetri: 0, // hauteur du tetrimino dans le plateau (0 =  haut du plateau)
-			leftTetri: 0 // position horizontale du tetrimino dans le plateau
-		};
 		
-		tetrimino.matrice = [[0,1,0],[1,1,1]];
-
+		// Creation d'un premier tetrimino
+		tetrimino = creationTetrimino();
+		console.log(tetrimino.matrice);
+		
 		// Placememt du tetrimino dans le plateau en début de descente 
-
-		for (var i=0; i<=tetrimino.hauteur; i++) {
-			for (var j=0; j<=tetrimino.largeur; j++) {
-				plateau.matrice[i+tetrimino.topTetri][j] = tetrimino.matrice[i][j];
-			}
-		}
+		placementTetrimino(plateau, tetrimino);
 		
 		console.log(plateau.matrice);
 		afficherPlateauCouleur(plateau.matrice);
@@ -54,6 +45,35 @@
 		mouvement = setInterval(function(){ mouvementPiece(tetrimino, plateau)}, 3000);
 		return mouvement;
 		
+	}
+	
+	function creationTetrimino() {
+		
+		tetrimino = {
+			matrice: new Array(),
+			rotations : new Array(),
+			rot : 0,
+			hauteur: 0,
+			largeur: 0,
+			topTetri: 0, // hauteur du tetrimino dans le plateau (0 =  haut du plateau)
+			leftTetri: 0 // position horizontale du tetrimino dans le plateau
+		};
+		
+		tetrimino.rotations =	[ [[0,1,0], [1,1,1]],
+						[[1,0], [1,1], [1,0]],
+						[[1,1,1], [0,1,0]],
+						[[0,1], [1,1], [0,1]] ];
+					
+		tetrimino = propTetrimino(tetrimino);
+		
+		return tetrimino;
+	}
+	
+	function propTetrimino(tetrimino) {
+		tetrimino.matrice = tetrimino.rotations[tetrimino.rot];
+		tetrimino.hauteur = tetrimino.matrice.length - 1;
+		tetrimino.largeur = tetrimino.matrice[0].length - 1;
+		return tetrimino;
 	}
 	
 	// départ de la partie
@@ -89,6 +109,7 @@
 		{
 			console.log("fleche haut activée");
 			clavier[38] = false;
+			rotationPiece(plateau, tetrimino);
 		}
 		else if (clavier[40] == true) // fleche bas
 		{
@@ -183,6 +204,31 @@
 		else {
 			descentePiece(plateau, tetrimino);
 		}
+		console.log(plateau.matrice);
+		return plateau, tetrimino;
+	}
+	
+	// Rotation du tetrimino
+	
+	function rotationPiece(plateau, tetrimino) {
+		// vérifier que avec la rotation, ça ne dépasse pas du bord
+		
+		if (tetrimino.hauteur > tetrimino.largeur && tetrimino.largeur + tetrimino.leftTetri == plateau.largeur) // gestion piece bord droit
+			tetrimino.leftTetri -=1 ;
+			
+		if (tetrimino.hauteur < tetrimino.largeur && tetrimino.topTetri + tetrimino.hauteur == plateau.hauteur) // gestion bord inf
+			tetrimino.topTetri -= 1;
+		
+		// mise à zero de l'ancien emplacement du tetrimino
+		emplacementZero(plateau, tetrimino);
+		
+		// modif du tetrimino
+		tetrimino.rot = (tetrimino.rot + 1) % 4;
+		tetrimino = propTetrimino(tetrimino);
+		
+		// placement du tetrimino
+		placementTetrimino(plateau, tetrimino);
+		
 		console.log(plateau.matrice);
 		return plateau, tetrimino;
 	}
