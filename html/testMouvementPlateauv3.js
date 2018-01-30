@@ -23,6 +23,8 @@
 		}
 	}
 	
+	afficherPlateauCouleur(plateau.matrice);
+	
 	//alert(plateau);
 	
 	function depart() {
@@ -46,9 +48,10 @@
 		}
 		
 		console.log(plateau.matrice);
+		afficherPlateauCouleur(plateau.matrice);
 		
 		// Lancement du mouvement
-		mouvement = setInterval(function(){ mouvementPiece(tetrimino, plateau)}, 5000);
+		mouvement = setInterval(function(){ mouvementPiece(tetrimino, plateau)}, 3000);
 		return mouvement;
 		
 	}
@@ -89,15 +92,17 @@
 		}
 		else if (clavier[40] == true) // fleche bas
 		{
-			console.log("fleche bas activée");
+			console.log("fleche bas activée = descente rapide");
 			clavier[40] = false;
-			descentePiece(plateau, tetrimino); // implementer une descente plus rapide
+			descentePiece(plateau, tetrimino);
+			descentePiece(plateau, tetrimino);	// descente plus rapide : descente de 2 au lieu de 1
 		}
 		else // descente piece automatique sinon
 		{
 			console.log("descente normale");
 			descentePiece(plateau, tetrimino);
 		}
+		afficherPlateauCouleur(plateau.matrice);
 	}
 	
 	// Descente du tetrimino
