@@ -22,7 +22,7 @@
 		}
 	}
 	
-	alert(plateau);
+	//alert(plateau);
 	
 	function depart() {
 		// Creation d'un premier tetrimino
@@ -43,10 +43,10 @@
 			}
 		}
 		
-		alert(plateau);
+		console.log(plateau);
 		
 		// Lancement du mouvement
-		mouvementPiece(tetrimino, plateau);
+		var mouvement = setInterval(function(){ mouvementPiece(tetrimino, plateau)}, 5000);
 		
 	}
 	
@@ -54,7 +54,7 @@
 	$('#depart').bind('click', depart);
 	
 	
-	// Gestion du clavier (touche down et up)
+ 	// Gestion du clavier (touche down et up)
 	$(document).keydown(function(e) {
 		clavier[e.keyCode] = true;
 	});
@@ -62,32 +62,70 @@
 
 	// Mouvement de la piece
 	function mouvementPiece(tetrimino, plateau) { // faire bouger la piece quand pas de clavier
-		//while (stop ==false) {
-			if (clavier[39] == true) // fleche droite
-			{
-				//pieceDroite();
-				alert("fleche droite activée")
+		
+		console.log("début mouvement");
+		
+		if (clavier[39] == true) // fleche droite
+		{
+			//pieceDroite();
+			console.log("fleche droite activée");
+			clavier[39] = false;
+		}
+		else if (clavier[37] == true) // fleche gauche
+		{
+			//pieceGauche();
+			console.log("fleche gauche activée");
+			clavier[37] = false;
+		}
+		else if (clavier[38] == true) // fleche haut
+		{
+			console.log("fleche haut activée");
+			clavier[38] = false;
+		}
+		else if (clavier[40] == true) // fleche bas
+		{
+			console.log("fleche bas activée");
+			clavier[40] = false;
+			//descentePiece(); // implementer une descente plus rapide
+		}
+		else // descente piece automatique sinon
+		{
+			console.log("descente normale");
+			//descentePiece(); // implementer une descente plus rapide
+		}
+	}
+	
+	// Descente du tetrimino
+
+	function descentePiece() {
+		// mise à zero de l'ancien emplacement du tetrimino
+		for (var i=0; i<=tetrimino.hauteur; i++) {
+			for (var j=0; j<=tetriLargeur; j++) {
+				plateau[i+absTetri][j] = 0; // à modifier car si autre piece dans le voisinage ça ne fonctionne pas
 			}
-			else if (clavier[37] == true) // fleche gauche
-			{
-				//pieceGauche();
-				alert("fleche gauche activée")
+		}
+		absTetri += 1; // modif hauteur max du tetrimino
+		// placement du nouveau tetrimino
+		if (absTetri + tetriHauteur <= tetriHauteur) {
+			for (var i=0; i<=tetriHauteur; i++) {
+				for (var j=0; j<=tetriLargeur; j++) {
+					plateau[i+absTetri][j] = tetrimino1[i][j]; // à modifier car si autre piece dans le voisinage ça ne fonctionne pas
+				}
 			}
-			else if (clavier[38] == true) // fleche haut
-			{
-				alert("fleche haut activée")
-			}
-			else if (clavier[40] == true) // fleche bas
-			{
-				alert("fleche bas activée")
-				//descentePiece(); // implementer une descente plus rapide
-			}
-			else // descente piece automatique sinon
-			{
-				//descentePiece(); // implementer une descente plus rapide
-			}
-			//alert(plateau);
-		//}
+		}
+		else
+			stop = true; // quand la premiere piece est en bas, arret. A modifier apres
+		return plateau, absTetri, stop
+	}
+
+	// Piece à droite
+
+	function pieceDroite() {
+	}
+
+	// Piece à gauche
+
+	function pieceGauche() {
 	}
 
 })();
