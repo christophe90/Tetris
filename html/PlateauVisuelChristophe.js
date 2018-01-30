@@ -1,19 +1,10 @@
 
-//createColoredPiece(2,3,"red");
-
-
-myStr = "1,1,1/1,0,0/1,0,0";
-//myStr = "1,2,3/4,5,0/0,0,0";
-
+myStr = "4,0,0,4,4,0,0,4,4,4/1,1,1,1,1,1,1,1,1,1/2,2,2,2,2,2,2,2,2,2/3,3,3,3,3,3,3,3,3,3/4,0,0,4,4,0,0,4,4,4/1,1,1,1,1,1,1,1,1,1/2,2,2,2,2,2,2,2,2,2/3,3,3,3,3,3,3,3,3,3";
 tab = stringToArray(myStr);
-afficherPlateau(tab);
 
+afficherPlateauCouleur(tab);
 
-myStr2 = "1,1,1,3,2,2/1,0,3,3,2,2/4,4,0,3,0,0/4,4,5,5,5,5";
-tab2 = stringToArray(myStr2);
-afficherPlateauCouleur(tab2);
-
-
+tab2 = verifSupprimerPlusieursLigne(tab);
 
 /*-------------------------------------------------------- Fonctions ----------------------------------------------------------------------------*/
 
@@ -22,8 +13,10 @@ afficherPlateauCouleur(tab2);
 function createPiece(posX, posY) {
 
 	var myPiece = $('<piece />');
-	myPiece.css("left", posX*40);
-	myPiece.css("top", 560-posY*40);
+	//myPiece.css("left", posX*40);
+	//myPiece.css("top", 560-posY*40);
+	myPiece.css("left", posY*40);
+	myPiece.css("top", posX*40);
 	$('section[class="plateau"]').append(myPiece);
 }
 
@@ -31,8 +24,10 @@ function createPiece(posX, posY) {
 function createColoredPiece(posX, posY, color) {
 
 	var myPiece = $('<piece />');
-	myPiece.css("left", posX*40);
-	myPiece.css("top", 560-posY*40);
+	//myPiece.css("left", posX*40);
+	//myPiece.css("top", 560-posY*40);
+	myPiece.css("left", posY*40);
+	myPiece.css("top", posX*40);
 	myPiece.css("background-color", color);
 	$('section[class="plateau"]').append(myPiece);
 }
@@ -69,7 +64,7 @@ function afficherPlateauCouleur(plateau) {
 		}
 }
 
-/*------------------------------------------------- Fonction qui remet le plateau visuel vide (supprime toute les pieces) ----------------------------------------------------------------*/
+/*------------------------------------------------- Fonction qui remet le plateau visuel vide (supprime toutes les pieces) ----------------------------------------------------------------*/
 
 function clearPlateau() {
 	$('piece').remove();
