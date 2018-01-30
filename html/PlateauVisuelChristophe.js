@@ -6,6 +6,8 @@ afficherPlateauCouleur(tab);
 
 tab2 = verifSupprimerPlusieursLigne(tab);
 
+afficherPlateauCouleur(tab2);
+
 /*-------------------------------------------------------- Fonctions ----------------------------------------------------------------------------*/
 
 /*------------------------------------- Creation de pieces visuelles à une coordonéee précise ----------------------------------------*/

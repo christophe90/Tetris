@@ -1,19 +1,19 @@
 
 /*------------------------------------------------------------------------- Fonctions ----------------------------------------------------------------------*/
 
-// Fonction qui vérifie pour une ligne donnée si elle est complètes
-function verifLigneComplete(plateau, myNumeroLigne) {
-	var count=0;
+// verifie toutes les lignes du plateau et supprime toutes les lignes complètes
+function verifSupprimerPlusieursLigne(plateau) {
 	
-	for (let j=0; j<plateau[0].length; j++)
-		if (plateau[myNumeroLigne][j]==0) {
-			count++;
+	var plateauFinal = plateau
+	
+	for (let i=plateau.length-1; i>=0; i--) {
+		while (verifLigneComplete(plateauFinal, i)) {
+			var nouveauPlateau =  verifSupprimerLigne(plateauFinal, i);
+			PlateauFinal = nouveauPlateau;
 		}
-		
-	if (count==0)
-		return true;
-	else
-		return false;
+	}
+	
+	return plateauFinal;
 }
 
 // Fonction qui vérifie pour une ligne donnee (numérotées de 0 à 14) si elle est complete, et la supprime le cas échéant
@@ -52,18 +52,17 @@ function verifSupprimerLigne(plateau, numeroLigne) {
 	return plateauTransforme;
 }
 
-// verifie toutes les lignes du plateau et supprime toutes les lignes complètes
-function verifSupprimerPlusieursLigne(plateau) {
+// Fonction qui vérifie pour une ligne donnée si elle est complètes
+function verifLigneComplete(plateau, myNumeroLigne) {
+	var count=0;
 	
-	var plateauFinal = plateau
-	
-	for (let i=plateau.length-1; i>=0; i--) {
-		while (verifLigneComplete(plateauFinal, i)) {
-			var nouveauPlateau =  verifSupprimerLigne(plateauFinal, i);
-			PlateauFinal = nouveauPlateau;
-			afficherPlateauCouleur(PlateauFinal);
+	for (let j=0; j<plateau[0].length; j++)
+		if (plateau[myNumeroLigne][j]==0) {
+			count++;
 		}
-	}
-	
-	return plateauFinal;
+		
+	if (count==0)
+		return true;
+	else
+		return false;
 }
