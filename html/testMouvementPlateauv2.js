@@ -94,5 +94,38 @@
 			//descentePiece(); // implementer une descente plus rapide
 		}
 	}
+	
+	// Descente du tetrimino
+
+	function descentePiece() {
+		// mise à zero de l'ancien emplacement du tetrimino
+		for (var i=0; i<=tetrimino.hauteur; i++) {
+			for (var j=0; j<=tetriLargeur; j++) {
+				plateau[i+absTetri][j] = 0; // à modifier car si autre piece dans le voisinage ça ne fonctionne pas
+			}
+		}
+		absTetri += 1; // modif hauteur max du tetrimino
+		// placement du nouveau tetrimino
+		if (absTetri + tetriHauteur <= tetriHauteur) {
+			for (var i=0; i<=tetriHauteur; i++) {
+				for (var j=0; j<=tetriLargeur; j++) {
+					plateau[i+absTetri][j] = tetrimino1[i][j]; // à modifier car si autre piece dans le voisinage ça ne fonctionne pas
+				}
+			}
+		}
+		else
+			stop = true; // quand la premiere piece est en bas, arret. A modifier apres
+		return plateau, absTetri, stop
+	}
+
+	// Piece à droite
+
+	function pieceDroite() {
+	}
+
+	// Piece à gauche
+
+	function pieceGauche() {
+	}
 
 })();
