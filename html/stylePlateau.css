@@ -64,3 +64,26 @@ div[class="lignes"]
 	font-size: 15pt;
 	font-family: cursive;
 }
+
+button {
+	position: relative;
+	top: 100px;
+	color: white;
+	background-color: #b70000;
+	border-radius: 10px;
+    width: 200px;
+    height: 50px;
+}
+
+button:hover {
+	background-color: #ff0000;
+	box-shadow: 10px 5px 5px black;
+	transition-property: box-shadow background-color;
+	transition-duration: 1s;
+	
+}
+
+button:active {
+	transform: scale(0.99);
+	transition: all 0.1s ease;
+}
