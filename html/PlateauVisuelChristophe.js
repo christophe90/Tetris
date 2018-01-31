@@ -63,11 +63,15 @@ function clearPlateau() {
 	$('piece').remove();
 }
 
-/*------------------------------------------------------- Fonction qui affiche le score ----------------------------------------------------------------------------*/
+/*-----------------------------------	----------- Fonction qui affiche le score et le nb de lignes détruites ----------------------------------------------------------------------------*/
 
-function afficherScore(score) {
-	
+function afficherScore(score, nbLignes) {
+
 	$('p[class="score"]').remove();
-	var myParagraph = $('<p class="score">'+score+'<p/>');
+	var myParagraph = $('<p class="score">'+score+'</p>');
 	$('div[class="score"]').append(myParagraph);
+
+	$('span[class="lignes"]').remove();
+	var mySpan = $('<span class="lignes">' + nbLignes+ " lignes " + '</span>');
+	$('div[class="lignes"]').append(mySpan);
 }
