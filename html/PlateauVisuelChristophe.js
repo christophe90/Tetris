@@ -1,16 +1,7 @@
 
-myStr = "4,0,0,4,4,0,0,4,4,4/1,1,1,1,1,1,1,1,1,1/2,2,2,2,2,2,2,2,2,2/3,3,3,3,3,3,3,3,3,3/4,0,0,4,4,0,0,4,4,4/1,1,1,1,1,1,1,1,1,1/2,2,2,2,2,2,2,2,2,2/3,3,3,3,3,3,3,3,3,3";
-tab = stringToArray(myStr);
+/*----------------------------------------------------------------------------- Fonctions ----------------------------------------------------------------*/
 
-afficherPlateauCouleur(tab);
-
-tab2 = verifSupprimerPlusieursLigne(tab);
-
-afficherPlateauCouleur(tab2);
-
-/*-------------------------------------------------------- Fonctions ----------------------------------------------------------------------------*/
-
-/*------------------------------------- Creation de pieces visuelles à une coordonéee précise ----------------------------------------*/
+/*--------------------------------------------------------- Creation de pieces visuelles à une coordonéee précise ----------------------------------------*/
 
 function createPiece(posX, posY) {
 
@@ -34,7 +25,7 @@ function createColoredPiece(posX, posY, color) {
 	$('section[class="plateau"]').append(myPiece);
 }
 
-/*----------------------------------------- Fonctions qui convertissent une matrice en tableau visuel ----------------------------------------------------*/
+/*---------------------------------------------- Fonctions qui convertissent une matrice en tableau visuel ----------------------------------------------------*/
 
 // matrice plateau: 0=vide, 1=piece
 function afficherPlateau(plateau) {
@@ -66,8 +57,21 @@ function afficherPlateauCouleur(plateau) {
 		}
 }
 
-/*------------------------------------------------- Fonction qui remet le plateau visuel vide (supprime toutes les pieces) ----------------------------------------------------------------*/
+/*----------------------------------------- Fonction qui remet le plateau visuel vide (supprime toutes les pieces) -------------------------------------------------*/
 
 function clearPlateau() {
 	$('piece').remove();
+}
+
+/*-----------------------------------	----------- Fonction qui affiche le score et le nb de lignes détruites ----------------------------------------------------------------------------*/
+
+function afficherScore(score, nbLignes) {
+
+	$('p[class="score"]').remove();
+	var myParagraph = $('<p class="score">'+score+'</p>');
+	$('div[class="score"]').append(myParagraph);
+
+	$('span[class="lignes"]').remove();
+	var mySpan = $('<span class="lignes">' + nbLignes+ " lignes " + '</span>');
+	$('div[class="lignes"]').append(mySpan);
 }

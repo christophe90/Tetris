@@ -1,24 +1,65 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Bienvenue sur Tetris, le tetris pas comme les autres !</title>
-	<meta name="description" content="Jouez ici au tetris">
-	<link rel="stylesheet" type="text/css" href="styleMouvementPlateau.css" />
-	<link rel="stylesheet" type="text/css" href="stylePiecesChristophe.css" />
-	<meta charset="UTF-8">
-</head>
-
+	<head>
+		<title>Bienvenue sur Tetris, le tetris pas comme les autres !</title>
+		<meta name="description" content="Jouez ici au tetris">
+		<link rel="stylesheet" type="text/css" href="stylePlateau.css" />
+		<link rel="stylesheet" type="text/css" href="styleAccueil.css" />
+		<link rel="stylesheet" type="text/css" href="stylePiecesChristophe.css" />
+		<link rel="stylesheet" type="text/css" href="stylePiecesResponsive.css" />
+		<link rel="stylesheet" type="text/css" href="responsive.css" />
+		<meta charset="UTF-8">
+	</head>
 <body>
 
-	<button id="depart">Départ</button>
+<nav>
+	<ul>
+		<li name="pseudo"><span>monPseudo</span>
+		<li><a href="accueil.html">Accueil</a></li>
+		<li><a href="scores.html">High scores</a></li>
+		<li><a href="plateau.html">Nouvelle partie</a></li>
+		<li><a href="connexion.html">Deconnexion</a></li>
+	</ul>
+</nav>
 
-	<section class="plateau">
-	</section>
+<div class="row">
+
+	<div class="column left">
+		<button id="depart">Départ</button>
+	</div>
+
+	<div class="column middle">
+		<section class="plateau">
+		</section>
+	</div>
+
+	<div class="column right">
+		<section class="recap">
+			<div class="score">
+				<!--score de la partie-->
+				<p class="score">0</p>
+			</div>
+			<div class="prochainePiece">
+				<!--prochain tetrimino-->
+			</div>
+			<div class="lignes">
+				<!--nombre de lignes explosées-->
+				<span class="lignes">0 lignes</span>
+			</div>
+		</section>
+	</div>
+
+</div>
+
+<footer>
+	Copyright tetris.fr
+</footer>
 
 	<script src="jquery-3.3.1.js"></script>
 	<script src="stringToArray.js"></script>
 	<script src="supprimerLigne.js"></script>
+	<script src="piecesTetriminoKlervi.js"></script>
 	<script src="PlateauVisuelChristophe.js"></script>
-	<!-- <script src="testMouvementPlateauv3.js"></script> -->
+	<script src="testMouvementPlateauv3Christophe.js"></script>
 </body>
 </html>

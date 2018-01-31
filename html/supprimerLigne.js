@@ -1,26 +1,37 @@
 
 /*------------------------------------------------------------------------- Fonctions ----------------------------------------------------------------------*/
 
-// verifie toutes les lignes du plateau et supprime toutes les lignes complètes
-function verifSupprimerPlusieursLigne(plateau) {
-	
-	var plateauFinal = plateau
-	
+// verifie toutes les lignes du plateau et supprime toutes les lignes complï¿½tes, retourne un tableau avec le score et le nombre de lignes supprimees
+function verifSupprimerPlusieursLignes(plateau) {
+
+	var count = 0;
+	var score = 0;
+
 	for (let i=plateau.length-1; i>=0; i--) {
-		while (verifLigneComplete(plateauFinal, i)) {
-			var nouveauPlateau =  verifSupprimerLigne(plateauFinal, i);
-			PlateauFinal = nouveauPlateau;
+		while (verifLigneComplete(plateau, i)) {
+			var nouveauPlateau =  verifSupprimerLigne(plateau, i);
+			plateau = nouveauPlateau;
+			count++;
 		}
 	}
-	
-	return plateauFinal;
+
+	if (count==1)
+		score = 40;
+	else if (count==2)
+		score = 100;
+	else if (count==3)
+		score = 300;
+	else if (count>=4)
+		score = 1200;
+
+	return [score, count];
 }
 
-// Fonction qui vérifie pour une ligne donnee (numérotées de 0 à 14) si elle est complete, et la supprime le cas échéant
+// Fonction qui vï¿½rifie pour une ligne donnee (numï¿½rotï¿½es de 0 ï¿½ 14) si elle est complete, et la supprime le cas ï¿½chï¿½ant. Elle retourne le plateau modifiï¿½
 function verifSupprimerLigne(plateau, numeroLigne) {
-	
+
 	// Initialisation du tableau plateauTransforme
-	
+
 	var plateauTransforme = new Array();
 
 	var largeur = plateau[0].length;
@@ -35,11 +46,11 @@ function verifSupprimerLigne(plateau, numeroLigne) {
 			plateauTransforme[i][j] = 0;
 		}
 	}
-	
+
 	var verif = verifLigneComplete(plateau, numeroLigne);
-	
+
 	plateauTransforme = plateau;
-	
+
 	if (verif==true)
 		for (let i=numeroLigne; i>=0; i--)
 			for (let j=0; j<plateau[i].length; j++) {
@@ -52,15 +63,15 @@ function verifSupprimerLigne(plateau, numeroLigne) {
 	return plateauTransforme;
 }
 
-// Fonction qui vérifie pour une ligne donnée si elle est complètes
-function verifLigneComplete(plateau, myNumeroLigne) {
+// Fonction qui vï¿½rifie pour une ligne donnï¿½e si elle est complï¿½te. Elle retourne "true" si la ligne est complï¿½te, "false" sinon
+function verifLigneComplete(myPlateau, myNumeroLigne) {
 	var count=0;
-	
-	for (let j=0; j<plateau[0].length; j++)
-		if (plateau[myNumeroLigne][j]==0) {
+
+	for (let j=0; j<myPlateau[0].length; j++)
+		if (myPlateau[myNumeroLigne][j]==0) {
 			count++;
 		}
-		
+
 	if (count==0)
 		return true;
 	else
