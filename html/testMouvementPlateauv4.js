@@ -37,13 +37,10 @@
 	
 	afficherPlateauCouleur(plateau.matrice);
 	
-	//alert(plateau);
-	
 	function depart() {
 		
 		// Creation d'un premier tetrimino
 		tetrimino = creationTetrimino(tetrimino);
-		//console.log(tetrimino.matrice);
 		
 		// Placememt du tetrimino dans le plateau en début de descente 
 		placementTetrimino(plateau, tetrimino);
@@ -52,7 +49,7 @@
 		afficherPlateauCouleur(plateau.matrice);
 		
 		// Lancement du mouvement
-		mouvement = setInterval(function(){ mouvementPiece(tetrimino, plateau)}, 3000);
+		mouvement = setInterval(function(){ mouvementPiece(tetrimino, plateau)}, 1000);
 		return mouvement;
 		
 	}
@@ -60,6 +57,7 @@
 	function creationTetrimino(tetrimino) {
 		
 		tetrimino.rotations = tetri(tetrimino.id);
+		tetrimino.rot = 0;
 		tetrimino = propTetrimino(tetrimino);
 		tetrimino.leftTetri = 0;
 		tetrimino.topTetri = 0;
@@ -153,8 +151,45 @@
 		// charge la piece suivante
 		tetrimino.id = ((tetrimino.id + 1) % 3) + 1;
 		creationTetrimino(tetrimino);
-		// Placememt du tetrimino dans le plateau en début de descente 
-		placementTetrimino(plateau, tetrimino);
+		
+		var tetriTest = testPlacementCreation(plateau, tetrimino);
+		console.log(tetriTest);
+		var obstacle = [];
+		// comparaison
+		mouvementAutorisee = true;
+		for (var i=0; i<=tetrimino.hauteur; i++) {
+			for (var j=0; j<=tetrimino.largeur; j++) {
+				if (tetrimino.matrice[i][j]>0 && parseInt(tetrimino.matrice[i][j]) != tetriTest[i][j]) {
+					mouvementAutorisee = false;
+					obstacle.push(i);
+				}
+			}
+		}
+		console.log(tetriTest);
+		console.log(obstacle);
+		if (mouvementAutorisee == true)
+			placementTetrimino(plateau, tetrimino);
+		else {
+			var a = obstacle[0];
+			var dernierTetri = new Array();
+			for (var i=0; i<a; i++) {
+				dernierTetri[i] = new Array();
+			}
+			for (var i=0; i<a; i++) {
+				for (var j=0; j<=tetrimino.largeur; j++) {
+					dernierTetri[i][j] = tetrimino.matrice[a+i][j];
+				}
+			}
+			for (var i=0; i<a; i++) {
+				for (var j=0; j<=tetrimino.largeur; j++) {
+					var a = plateau.matrice[i][j];
+					var b = dernierTetri[i][j];
+					plateau.matrice[i][j] = parseInt(a) + parseInt(b);
+				}
+			}
+			clearInterval(mouvement);
+			alert("Fin de la partie");
+		}
 	}
 	
 	function emplacementZero(plateau, tetrimino) {
@@ -197,9 +232,8 @@
 			else
 				descentePiece(plateau, tetrimino);
 		}
-		else {
+		else
 			descentePiece(plateau, tetrimino);
-		}
 		return plateau, tetrimino;
 	}
 
@@ -211,42 +245,57 @@
 			if (mouvementAutorisee == true) {
 				// mise à zero de l'ancien emplacement du tetrimino
 				emplacementZero(plateau, tetrimino)
-				
 				// modif position horizontale du tetrimino
 				tetrimino.leftTetri -= 1;
-				
 				// placement du tetrimino
 				placementTetrimino(plateau, tetrimino);
 			}
 			else
 				descentePiece(plateau, tetrimino);
 		}
-		else {
+		else
 			descentePiece(plateau, tetrimino);
-		}
 		return plateau, tetrimino;
 	}
 	
 	// Rotation du tetrimino
 	
 	function rotationPiece(plateau, tetrimino) {
-		// mise à zero de l'ancien emplacement du tetrimino
-		emplacementZero(plateau, tetrimino);
+		var modifLeft = false;
+		var modifTop = false;
 		
-		if (tetrimino.hauteur > tetrimino.largeur && tetrimino.largeur + tetrimino.leftTetri == plateau.largeur) // gestion piece bord droit
+		if (tetrimino.hauteur > tetrimino.largeur && tetrimino.largeur + tetrimino.leftTetri == plateau.largeur) { // gestion piece bord droit
 			tetrimino.leftTetri -=  tetrimino.hauteur - tetrimino.largeur;
+			modifLeft = true;
+		}
 			
-		if (tetrimino.hauteur < tetrimino.largeur && tetrimino.topTetri + tetrimino.hauteur == plateau.hauteur) // gestion bord inf
+		if (tetrimino.hauteur < tetrimino.largeur && tetrimino.topTetri + tetrimino.hauteur == plateau.hauteur) { // gestion bord inf
 			tetrimino.topTetri -= tetrimino.largeur - tetrimino.hauteur;
+			modifTop = true;
+		}
 		
-		// modif du tetrimino
-		tetrimino.rot = (tetrimino.rot + 1) % 4;
-		tetrimino = propTetrimino(tetrimino);
+		testRotation(plateau, tetrimino);
+		if (mouvementAutorisee == true) {
+			// mise à zero de l'ancien emplacement du tetrimino
+			emplacementZero(plateau, tetrimino);
+			
+			// modif du tetrimino
+			tetrimino.rot = (tetrimino.rot + 1) % 4;
+			tetrimino = propTetrimino(tetrimino);
+			
+			// placement du tetrimino
+			placementTetrimino(plateau, tetrimino);
+		}
+		else {
+			// si piece decalé à gauche pour faire rotation et que la rotation n'a pas été autorisée, on la remet à sa place
+			if (modifLeft == true)
+				tetrimino.leftTetri +=  tetrimino.hauteur - tetrimino.largeur;
+			// si piece montée pour faire rotation et que la rotation n'a pas été autorisée, on la remet à sa place
+			if (modifTop == true)
+				tetrimino.topTetri += tetrimino.largeur - tetrimino.hauteur;
+			descentePiece(plateau, tetrimino); //descente de la pièce dans tout les cas de rotation non autorisée
+		}
 		
-		// placement du tetrimino
-		placementTetrimino(plateau, tetrimino);
-		
-		//console.log(plateau.matrice);
 		return plateau, tetrimino;
 	}
 	
@@ -264,15 +313,13 @@
 			for (var j=0; j<=tetrimino.largeur; j++) {
 				var c = plateauTest[i+tetrimino.topTetri+1][j+tetrimino.leftTetri];
 				var d = tetrimino.matrice[i][j];
-				tetriTest[i][j] = parseInt(c) + parseInt(tetrimino.matrice[i][j]);
+				tetriTest[i][j] = parseInt(c) + parseInt(d);
 			}
 		}
 		
 		// comparaison
 		mouvementAutorisee = comparaisonTetri(tetrimino, tetriTest);
-		
 		return mouvementAutorisee;
-		
 	}
 	
 	function testDroite(plateau, tetrimino) {
@@ -287,15 +334,13 @@
 			for (var j=0; j<=tetrimino.largeur; j++) {
 				var c = plateauTest[i+tetrimino.topTetri][j+tetrimino.leftTetri+1];
 				var d = tetrimino.matrice[i][j];
-				tetriTest[i][j] = parseInt(c) + parseInt(tetrimino.matrice[i][j]);
+				tetriTest[i][j] = parseInt(c) + parseInt(d);
 			}
 		}
 		
 		// comparaison
 		mouvementAutorisee = comparaisonTetri(tetrimino, tetriTest);
-		
 		return mouvementAutorisee;
-		
 	}
 	
 	function testGauche(plateau, tetrimino) {
@@ -310,12 +355,70 @@
 			for (var j=0; j<=tetrimino.largeur; j++) {
 				var c = plateauTest[i+tetrimino.topTetri][j+tetrimino.leftTetri-1];
 				var d = tetrimino.matrice[i][j];
-				tetriTest[i][j] = parseInt(c) + parseInt(tetrimino.matrice[i][j]);
+				tetriTest[i][j] = parseInt(c) + parseInt(d);
 			}
 		}
 		
 		// comparaison
 		mouvementAutorisee = comparaisonTetri(tetrimino, tetriTest);
+		return mouvementAutorisee;
+	}
+	
+	function testPlacementCreation(plateau, tetrimino) {
+		var plateauTest = new Array();
+		for (var i=0; i<=plateau.hauteur; i++) {
+			plateauTest[i] = new Array();
+		}
+		for (var i=0; i<=plateau.hauteur; i++) {
+			for (var j=0; j<=plateau.largeur; j++) {
+				plateauTest[i][j] = plateau.matrice[i][j];
+			}
+		}
+		
+		// test placement à la creation
+		var tetriTest = new Array();
+		for (var i=0; i<=tetrimino.hauteur; i++) {
+			tetriTest[i] = new Array();
+		}
+		for (var i=0; i<=tetrimino.hauteur; i++) {
+			for (var j=0; j<=tetrimino.largeur; j++) {
+				var c = plateauTest[i][j];
+				var d = tetrimino.matrice[i][j];
+				tetriTest[i][j] = parseInt(c) + parseInt(d);
+			}
+		}
+		return tetriTest;
+	}
+	
+	function testRotation(plateau, tetrimino) {
+		var plateauTest = creationPlateauTest(plateau, tetrimino);
+		
+		// test de mouvement à droite
+		var tetriTest = new Array();
+		for (var i=0; i<=tetrimino.largeur; i++) {
+			tetriTest[i] = new Array();
+		}
+		// modif du tetrimino
+		rotationTest = (tetrimino.rot + 1) % 4;
+		tetriminoMatTest = tetrimino.rotations[rotationTest];
+		tetriHauteurTest = tetriminoMatTest.length - 1;
+		tetriLargeurTest = tetriminoMatTest[0].length - 1;
+		
+		for (var i=0; i<=tetriHauteurTest; i++) {
+			for (var j=0; j<=tetriLargeurTest; j++) {
+				var c = plateauTest[i+tetrimino.topTetri][j+tetrimino.leftTetri];
+				var d = tetriminoMatTest[i][j];
+				tetriTest[i][j] = parseInt(c) + parseInt(d);
+			}
+		}
+		// comparaison
+		mouvementAutorisee = true;
+		for (var i=0; i<=tetriHauteurTest; i++) {
+			for (var j=0; j<=tetriLargeurTest; j++) {
+				if (tetriminoMatTest[i][j]>0 && parseInt(tetriminoMatTest[i][j]) != tetriTest[i][j])
+					mouvementAutorisee = false;
+			}
+		}
 		
 		return mouvementAutorisee;
 		
@@ -326,13 +429,11 @@
 		for (var i=0; i<=plateau.hauteur; i++) {
 			plateauTest[i] = new Array();
 		}
-
 		for (var i=0; i<=plateau.hauteur; i++) {
 			for (var j=0; j<=plateau.largeur; j++) {
 				plateauTest[i][j] = plateau.matrice[i][j];
 			}
 		}
-		
 		// calcul du plateau-tetrimino
 		for (var i=0; i<=tetrimino.hauteur; i++) {
 			for (var j=0; j<=tetrimino.largeur; j++) {
@@ -341,7 +442,6 @@
 				plateauTest[i+tetrimino.topTetri][j+tetrimino.leftTetri] = parseInt(b) - parseInt(a);
 			}
 		}
-		
 		return plateauTest;
 	}
 	
