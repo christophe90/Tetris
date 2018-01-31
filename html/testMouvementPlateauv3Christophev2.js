@@ -44,6 +44,8 @@
 
 		// Creation d'un premier tetrimino
 		tetrimino = creationTetrimino(tetrimino);
+		tetriminoSuivant = creationTetrimino(tetrimino);
+		tetriminoSuivant.id = ((tetrimino.id + 1) % 3) + 1;
 		console.log(tetrimino.matrice);
 
 		// Placememt du tetrimino dans le plateau en début de descente
@@ -53,7 +55,7 @@
 		afficherPlateauCouleur(plateau.matrice);
 
 		// Lancement du mouvement
-		mouvement = setInterval(function(){ mouvementPiece(tetrimino, plateau)}, 200);
+		mouvement = setInterval(function(){ mouvementPiece(tetrimino, plateau, tetriminoSuivant)}, 200);
 		return mouvement;
 
 	}
@@ -85,7 +87,7 @@
 
 
 	// Mouvement de la piece
-	function mouvementPiece(tetrimino, plateau) {
+	function mouvementPiece(tetrimino, plateau, tetriminoSuivant) {
 
 		var tabScore = verifSupprimerPlusieursLignes(plateau.matrice);	//---------------------------------------------- modif Christophe
 		plateau.score += tabScore[0]; //----------------------
@@ -132,7 +134,7 @@
 
 	// Descente du tetrimino
 
-	function descentePiece(plateau, tetrimino) {
+	function descentePiece(plateau, tetrimino, tetriminoSuivant) {
 
 		if (tetrimino.topTetri + tetrimino.hauteur < plateau.hauteur) {
 
@@ -152,14 +154,22 @@
 			}
 			else {
 				// charge la piece suivante
-				tetrimino.id = ((tetrimino.id + 1) % 3) + 1;
+				tetrimino = tetriminoSuivant;
 				creationTetrimino(tetrimino);
+
+				//-------------------------------------------------------- modif Christophe
+				tetriminoSuivant.id = ((tetrimino.id + 1) % 3) + 1;
+				afficherProchainTetrimino(tetriminoSuivant);
 			}
 		}
 		else {
 			// charge la piece suivante
-			tetrimino.id = ((tetrimino.id + 1) % 3) + 1;
+			tetrimino = tetriminoSuivant;
 			creationTetrimino(tetrimino);
+
+			//-------------------------------------------------------- modif Christophe
+			tetriminoSuivant.id = ((tetrimino.id + 1) % 3) + 1;
+			afficherProchainTetrimino(tetriminoSuivant);
 		}
 		console.log(plateau.matrice);
 		collision = false;

@@ -75,3 +75,25 @@ function afficherScore(score, nbLignes) {
 	var mySpan = $('<span class="lignes">' + nbLignes+ " lignes " + '</span>');
 	$('div[class="lignes"]').append(mySpan);
 }
+
+/*----------------------------------------------- Fonction qui affiche le tetrimino suivant -----------------------------------------------------------------*/
+
+function afficherProchainTetrimino(matriceTetrimino) {
+
+	$('piece[class="prochainTetrimino"]').remove();
+	for (let i=0; i<matriceTetrimino.length; i++)
+		for (let j=0; j<matriceTetrimino[i].length; j++)
+			if (matriceTetrimino[i][j]!=0)
+				createPiece(i,j);
+}
+
+function createPieceProchainTetrimino(posX, posY, color) {
+
+	var myPiece = $('<piece />');
+	//myPiece.css("left", posX*40);
+	//myPiece.css("top", 560-posY*40);
+	myPiece.css("left", posY*40);
+	myPiece.css("top", posX*40);
+	myPiece.css("background-color", color);
+	$('div[class="prochainePiece"]').append(myPiece);
+}
