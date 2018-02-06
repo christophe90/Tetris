@@ -3,9 +3,15 @@
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" href="/projetSpringMVC/home/Klervi?idProduit=45#">Accueil</a>
+    <a class="nav-link active" href="/tetris-web/admin/home?adminName=">Accueil</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" href="/projetSpringMVC/produits/produit">Liste des produits</a>
+    <a class="nav-link active" href="/tetris-web/admin/faq">FAQ</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="/tetris-web/admin/tetriminos">Tetriminos</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="/tetris-web/admin/connexion">Déconnexion</a>
   </li>
 </ul>
