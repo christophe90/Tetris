@@ -2,3 +2,5 @@
 .classpath
 target/
 tetris-dao/\.settings/
+
+tetris-web/\.settings/org\.eclipse\.wst\.common\.component
