@@ -4,6 +4,8 @@
 
 <link rel="stylesheet" href="/tetris-web/css/bootstrap.min.css"/>
 
+<head></head>
+
 <body>
 
 	<div class="container">

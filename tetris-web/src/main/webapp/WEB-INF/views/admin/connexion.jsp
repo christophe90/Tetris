@@ -4,14 +4,14 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <tiles:insertDefinition name="app.layout">
-	<tiles:putAttribute name="title1" value="Edition du produit" />
+	<tiles:putAttribute name="title1" value="Connexion" />
 	<tiles:putAttribute name="content">
 	
-		<form:form method="post" modelAttribute="produit">
+		<form:form method="post" modelAttribute="admin">
 			<table>
 				<tr>
-					<td><form:label path="adminName">Nom</form:label></td>
-				    <td><form:input path="adminName" /></td>
+					<td><form:label path="login">Nom</form:label></td>
+				    <td><form:input path="login" /></td>
 			    </tr>
 				<tr>
 				    <td><form:label path="password">Mot de passe</form:label></td>
@@ -19,7 +19,7 @@
 			    </tr>
 			</table>
 		    
-		    <button type="submit" class="btn btn-outline-success" value="Se connecter"> </button>
+		    <button type="submit" class="btn btn-outline-success" value="Se connecter">Se connecter</button>
 		</form:form>	
 	</tiles:putAttribute>
 </tiles:insertDefinition>
