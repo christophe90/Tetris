@@ -15,7 +15,7 @@ public class FaqController {
 	@Autowired
 	IFaqDAO daoFaq;
 	
-	@GetMapping(value={ "" })
+	@GetMapping("")
 	public String afficherFaq(Model model) {
 		model.addAttribute("faq",daoFaq.findAll());
 		return "admin/faq";
