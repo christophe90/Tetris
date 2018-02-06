@@ -3,8 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <tiles:insertDefinition name="app.layout">
-	<tiles:putAttribute name="title1" value="Bonjour ${adminName} !" />
+	<tiles:putAttribute name="title1" value="Bienvenue sur l'interface administrateur" />
 	<tiles:putAttribute name="content">
- 		Bienvenue sur l'interface administrateur
+ 		Bonjour ${login} !
 	</tiles:putAttribute>
 </tiles:insertDefinition>
