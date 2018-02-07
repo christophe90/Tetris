@@ -30,23 +30,26 @@ public class loginController {
 	}
 	
 	@GetMapping("/{message}")
-	public String connexion2(Model model, @PathVariable String message) {
+	public String connexion2(Model model, @PathVariable boolean message) {
 		model.addAttribute("admin", new Admin());
 		model.addAttribute("message", message);
 		return "admin/connexion";
 	}
 	
-	@PostMapping("")
+	@PostMapping(value={"", "/{message}"})
 	public String ajoutProduit(@Valid@ModelAttribute("admin") Admin admin, BindingResult result, Model model, @RequestParam("login") String login) {
 		if (result.hasErrors()) {
 			return "admin/connexion";
 		}
+		boolean message = false;
 		Admin admin2 = daoAuth.findAdmin(admin.getLogin(), admin.getPassword());
 		if ( admin2 == null ) {
-			return "admin/connexion";
+			message = true;
+			model.addAttribute("message", message);
+			return "redirect:./connexion/{message}";
 		}
 		model.addAttribute("login", login);
-		return "redirect:./home/{login}";
+		return "redirect:/admin/home/{login}";
 	}
 	
 }

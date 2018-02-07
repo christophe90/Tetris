@@ -22,6 +22,12 @@
 			<form:errors path="login" element="div" cssClass="alert alert-danger" />
 		    <form:errors path="password" element="div" cssClass="alert alert-danger" />
 		    
+		    <c:if test = "${message == true}">
+		    	<div class="alert alert-danger" role="alert">
+					Le login ou le mot de passe est incorrect
+				</div>
+			</c:if>
+		    
 		    <button type="submit" class="btn btn-outline-success" value="Se connecter">Se connecter</button>
 		</form:form>	
 	</tiles:putAttribute>
