@@ -7,5 +7,25 @@
 	<tiles:putAttribute name="title1" value="Ajout d'un tetrimino" />
 	<tiles:putAttribute name="content">
 		
+		<form:form method="post" modelAttribute="tetrimino">
+			<table>
+				<tr>
+					<td><form:label path="nom">Nom</form:label></td>
+				    <td><form:input path="nom" /></td>
+			    </tr>
+				<tr>
+				    <td><form:label path="couleur">Couleur</form:label></td>
+				    <td><form:input path="couleur" /></td>
+			    </tr>
+			    <tr>
+				    <td><form:label path="str">Forme</form:label></td>
+				    <td><form:input path="str" /></td>
+			    </tr>
+			</table>
+		    
+		    <button type="submit" class="btn btn-outline-success" value="Valider">Valider</button>
+		</form:form>
+		
+		
 	</tiles:putAttribute>
 </tiles:insertDefinition>
