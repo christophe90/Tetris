@@ -10,7 +10,7 @@
 		<form:form method="post" modelAttribute="admin">
 			<table>
 				<tr>
-					<td><form:label path="login">Nom</form:label></td>
+					<td><form:label path="login">Login</form:label></td>
 				    <td><form:input path="login" /></td>
 			    </tr>
 				<tr>
@@ -18,6 +18,9 @@
 				    <td><form:input path="password" /></td>
 			    </tr>
 			</table>
+			
+			<form:errors path="login" element="div" cssClass="alert alert-danger" />
+		    <form:errors path="password" element="div" cssClass="alert alert-danger" />
 		    
 		    <button type="submit" class="btn btn-outline-success" value="Se connecter">Se connecter</button>
 		</form:form>	
