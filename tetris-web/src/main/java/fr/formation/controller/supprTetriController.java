@@ -5,23 +5,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.formation.dao.ITetriminoDAO;
-import tetris.model.auth.Admin;
-import tetris.model.piece.RotationTetrimino;
-import tetris.model.piece.Tetrimino;
 
 @Controller
-@RequestMapping("/admin/ajoutTetri")
-public class ajoutTetriController {
-	
+@RequestMapping("/admin/supprimerTetri")
+public class supprTetriController {
+
 	@Autowired
 	private ITetriminoDAO daoTetri;
 	
 	@GetMapping("")
-	public String connexion(Model model) {
-		model.addAttribute("tetrimino", new RotationTetrimino());
-		return "admin/ajoutTetri";
+	public String suppression(@RequestParam("id") int id,Model model) {
+		daoTetri.deleteById(id);
+		return "redirect:/admin/tetriminos/${login}";
 	}
 	
 }
