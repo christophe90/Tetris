@@ -12,10 +12,12 @@
 		<h1>
 			<tiles:insertAttribute name="title1" />
 		</h1>
-	
-		<nav>
-			<tiles:insertAttribute name="navigation" />
-		</nav>
+		
+		<c:if test="${login != null}">
+			<nav>
+				<tiles:insertAttribute name="navigation" />
+			</nav>
+		</c:if>
 		
 		<tiles:insertAttribute name="content" />
 	</div>
