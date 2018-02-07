@@ -11,9 +11,9 @@
 					<th>Id</th>
 					<th>Nom</th>
 					<th>Couleur</th>
-					<th>String</th>
-					<th> </th>
-					<th> </th>
+					<th>Forme</th>
+					<th>Etat</th>
+					<th>Action</th>
 				</tr>
 				<c:forEach items="${tetriminos}" var="tetri">
 					<tr>
@@ -36,9 +36,9 @@
 								</c:forTokens>
 							</table>
 						</td>
-						<td><a href="/tetris-web/admin/tetrimino/${login}/activerTetri?id=${tetri.id}" class="btn btn-outline-primary" value="Activer"> Activer</a>
-						<a href="/tetris-web/admin/tetrimino/${login}/desactiverTetri?id=${tetri.id}" class="btn btn-outline-danger" value="Désactiver"> Désactiver</a></td>
-						<td><button href="/tetris-web/admin/tetrimino/${login}/modifierTetri?id=${tetri.id}" type="button" class="btn btn-outline-secondary">Modifier</button></td>
+						<td><a href="/tetris-web/admin/tetrimino/activerTetri?id=${tetri.id}" class="btn btn-outline-primary" value="Activer"> Activer</a>
+						<a href="/tetris-web/admin/tetrimino/desactiverTetri?id=${tetri.id}" class="btn btn-outline-danger" value="Désactiver"> Désactiver</a></td>
+						<td><button href="/tetris-web/admin/tetrimino/modifierTetri?id=${tetri.id}" type="button" class="btn btn-outline-secondary">Modifier</button></td>
 					</tr>
 				</c:forEach>
 			</table>
