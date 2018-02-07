@@ -3,13 +3,13 @@
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" href="/tetris-web/admin/home?adminName=">Accueil</a>
+    <a class="nav-link active" href="/tetris-web/admin/home/${login}">Accueil</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" href="/tetris-web/admin/faq">FAQ</a>
+    <a class="nav-link active" href="/tetris-web/admin/faq/${login}">FAQ</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" href="/tetris-web/admin/tetriminos">Tetriminos</a>
+    <a class="nav-link active" href="/tetris-web/admin/tetriminos/${login}">Tetriminos</a>
   </li>
   <li class="nav-item">
     <a class="nav-link active" href="/tetris-web/admin/connexion">Déconnexion</a>
