@@ -36,13 +36,14 @@
 								</c:forTokens>
 							</table>
 						</td>
-						<td><a href="/tetris-web/admin/tetriminos/activerTetri?id=${tetri.id}" class="btn btn-outline-primary" value="Activer"> Activer</a>
-						<a href="/tetris-web/admin/tetriminos/desactiverTetri?id=${tetri.id}" class="btn btn-outline-danger" value="Désactiver"> Désactiver</a></td>
-						<td><button href="/tetris-web/admin/tetriminos/modifierTetri?id=${tetri.id}" type="button" class="btn btn-outline-secondary">Modifier</button></td>
+						<td><a href="/tetris-web/admin/activerTetri?id=${tetri.id}" class="btn btn-outline-primary"> Activer</a>
+						<a href="/tetris-web/admin/desactiverTetri?id=${tetri.id}" class="btn btn-outline-danger"> Désactiver</a></td>
+						<td><a href="/tetris-web/admin/modifierTetri?id=${tetri.id}" class="btn btn-outline-secondary">Modifier</a>
+						<a href="/tetris-web/admin/supprimerTetri?id=${tetri.id}" class="btn btn-outline-warning">Supprimer</a></td>
 					</tr>
 				</c:forEach>
 			</table>
 			
-			<a  href="/tetris-web/admin/tetriminos/ajoutTetri" class="btn btn-outline-success" value="Ajouter"> Ajouter un tetrimino</a>
+			<a  href="/tetris-web/admin/ajoutTetri" class="btn btn-outline-success" value="Ajouter"> Ajouter un tetrimino</a>
 	</tiles:putAttribute>
 </tiles:insertDefinition>
