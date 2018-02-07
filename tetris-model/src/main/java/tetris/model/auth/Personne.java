@@ -19,13 +19,13 @@ public abstract class Personne implements Serializable{
 	
 	@Column(name="PER_LOGIN")
 	@NotNull
-	@NotEmpty
+	@NotEmpty(message="Le login est obligatoire")
 	protected String login;
 	
 	@Column(name="PER_PASSWORD")
 	@NotNull
-	@NotEmpty
-	@Size(min=4)
+	@NotEmpty(message="Le mot de passe est obligatoire")
+	@Size(min=4, message="Le nombre de caractère du mot de passe doit être supérieur à 4")
 	protected String password;
 
 	public int getId() {

@@ -1,10 +1,14 @@
 package fr.formation.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,13 +29,24 @@ public class loginController {
 		return "admin/connexion";
 	}
 	
+	@GetMapping("/{message}")
+	public String connexion2(Model model, @PathVariable String message) {
+		model.addAttribute("admin", new Admin());
+		model.addAttribute("message", message);
+		return "admin/connexion";
+	}
+	
 	@PostMapping("")
-	public String ajoutProduit(@ModelAttribute("admin") Admin admin, Model model, @RequestParam("login") String login) {
-		Admin admin2 = (Admin) daoAuth.findByLogin(admin.getLogin());
-		if (! admin2.getPassword().equals(admin.getPassword())) {
+	public String ajoutProduit(@Valid@ModelAttribute("admin") Admin admin, BindingResult result, Model model, @RequestParam("login") String login) {
+		if (result.hasErrors()) {
 			return "admin/connexion";
 		}
-		return "redirect:.admin/home/{login}";
+		Admin admin2 = daoAuth.findAdmin(admin.getLogin(), admin.getPassword());
+		if ( admin2 == null ) {
+			return "admin/connexion";
+		}
+		model.addAttribute("login", login);
+		return "redirect:./home/{login}";
 	}
 	
 }
