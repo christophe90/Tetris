@@ -20,11 +20,12 @@ public class TetriminoController {
 	@Autowired
 	private ITetriminoDAO daoTetri;
 	
-	//@RequestMapping(value={"/{login}" }, method=RequestMethod.GET)
-	//public String tetrimino(@PathVariable String login, Model model) {
-	@GetMapping("")
-	public String tetrimino(Model model) {
-		model.addAttribute("tetriminos", daoTetri.findAll());
+	@RequestMapping(value={"/{login}" }, method=RequestMethod.GET)
+	public String tetrimino(@PathVariable String login, Model model) {
+	//@GetMapping("")
+//	public String tetrimino(Model model) {
+		List<Tetrimino> tetris = daoTetri.findAll();
+		model.addAttribute("tetriminos", tetris);
 		return "admin/tetriminos";
 	}
 	
