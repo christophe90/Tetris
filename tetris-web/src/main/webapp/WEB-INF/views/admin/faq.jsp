@@ -4,12 +4,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <tiles:insertDefinition name="app.layout">
-<tiles:putAttribute name="title" value="Foire aux question" />
+<tiles:putAttribute name="title1" value="Foire aux question" />
 <tiles:putAttribute name="content">
 
 
-	<p>Test Christophe</p>
-	
 	<table class="table table-striped">
 				<thead>
 					<tr>
@@ -17,18 +15,18 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${ produits }" var="produits">
+					<c:forEach items="${ faq }" var="faq">
 						<tr>
-							<td>${ faq.question }</td>
-							<td><a class="btn btn-secondary" href="/tetris-web/admin/faq/editer/${produits.id}" role="button">Modifier</a></td>
-							<td><a class="btn btn-danger" href="/tetris-web/admin/faq/supprimer/${produits.id}"role="button">Supprimer</a></td>
+							<td>${ faq.questions }</td>
+							<td><a class="btn btn-secondary" href="/tetris-web/admin/faq/editer/${faq.id}" role="button">Modifier</a>
+							<a class="btn btn-danger" href="/tetris-web/admin/faq/supprimer/${faq.id}"role="button">Supprimer</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 	
 			<div>
-				<a class="btn btn-primary" href="/tetris-web/admin/faq/ajouter" role="button">Ajouter une nouvelle question</a>
+				<a class="btn btn-primary" href="/tetris-web/admin/faq/editer" role="button">Ajouter une nouvelle question</a>
 			</div>
 
 </tiles:putAttribute>

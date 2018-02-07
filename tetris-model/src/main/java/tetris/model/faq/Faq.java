@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "faq")
@@ -17,9 +18,11 @@ public class Faq {
 	private int id;
 	
 	@Column(name="FAQ_QUESTION")
+	@NotEmpty(message="Merci de saisir une question")
 	private String questions;
 	
 	@Column(name="FAQ_REPONSE")
+	@NotEmpty(message="Merci de saisir une réponse")
 	private String reponse;
 	
 	public Faq() {

@@ -36,13 +36,13 @@
 								</c:forTokens>
 							</table>
 						</td>
-						<td><a href="/tetris-web/admin/tetrimino/activerTetri?id=${tetri.id}" class="btn btn-outline-primary" value="Activer"> Activer</a>
-						<a href="/tetris-web/admin/tetrimino/desactiverTetri?id=${tetri.id}" class="btn btn-outline-danger" value="Désactiver"> Désactiver</a></td>
-						<td><button href="/tetris-web/admin/tetrimino/modifierTetri?id=${tetri.id}" type="button" class="btn btn-outline-secondary">Modifier</button></td>
+						<td><a href="/tetris-web/admin/tetriminos/activerTetri?id=${tetri.id}" class="btn btn-outline-primary" value="Activer"> Activer</a>
+						<a href="/tetris-web/admin/tetriminos/desactiverTetri?id=${tetri.id}" class="btn btn-outline-danger" value="Désactiver"> Désactiver</a></td>
+						<td><button href="/tetris-web/admin/tetriminos/modifierTetri?id=${tetri.id}" type="button" class="btn btn-outline-secondary">Modifier</button></td>
 					</tr>
 				</c:forEach>
 			</table>
 			
-			<a  href="/projetSpringMVC/produits/ajoutTetri" class="btn btn-outline-success" value="Ajouter"> Ajouter un tetrimino</a>
+			<a  href="/tetris-web/admin/tetriminos/ajoutTetri" class="btn btn-outline-success" value="Ajouter"> Ajouter un tetrimino</a>
 	</tiles:putAttribute>
 </tiles:insertDefinition>
