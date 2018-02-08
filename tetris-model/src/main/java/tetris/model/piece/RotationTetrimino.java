@@ -29,6 +29,13 @@ public class RotationTetrimino extends Tetrimino {
 		this.tetrimino180 = arrayToString(rotation90SensHoraire(stringToArray(this.tetrimino90)));
 		this.tetrimino270 = arrayToString(rotation90SensHoraire(stringToArray(this.tetrimino180)));
 	}
+	
+	public void setStr(String str) {
+		this.str = str;
+		this.tetrimino90 = arrayToString(rotation90SensHoraire(stringToArray(str)));
+		this.tetrimino180 = arrayToString(rotation90SensHoraire(stringToArray(this.tetrimino90)));
+		this.tetrimino270 = arrayToString(rotation90SensHoraire(stringToArray(this.tetrimino180)));
+	}
 
 	public String getTetrimino90() {
 		return tetrimino90;

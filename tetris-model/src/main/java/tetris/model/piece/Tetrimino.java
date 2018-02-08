@@ -10,7 +10,8 @@ import tetris.model.jeu.Coup;
 @Entity
 @Table(name="tetrimino")
 @Inheritance(strategy=InheritanceType.JOINED)
-public abstract class Tetrimino implements Serializable {
+//public abstract class Tetrimino implements Serializable {
+public class Tetrimino implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

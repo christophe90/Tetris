@@ -27,7 +27,8 @@
 									<tr>
 									<c:forTokens items = "${ligne}" delims = "," var="carac">
 										<c:if test="${carac == 1}">
-											<td class="bg-warning"></td>
+<!-- 											<td class="bg-warning"></td> -->
+												<td bgcolor="#1eed25" >
 										</c:if>
 										<c:if test="${carac == 0}">
 											<td class="table-light"></td>
@@ -38,8 +39,16 @@
 							</table>
 						</td>
 						
-						<td><a href="/tetris-web/admin/activerTetri?id=${tetri.id}" class="btn btn-outline-primary active"> Activer</a>
-						<a href="/tetris-web/admin/desactiverTetri?id=${tetri.id}" class="btn btn-outline-danger disabled"> Désactiver</a></td>
+						<td>
+						<c:if test="${tetri.actif == true}" >
+							<a href="/tetris-web/admin/activerTetri?id=${tetri.id}" class="btn btn-primary"> Activer</a>
+							<a href="/tetris-web/admin/desactiverTetri?id=${tetri.id}" class="btn btn-outline-danger"> Désactiver</a>
+						</c:if>
+						<c:if test="${tetri.actif == false}" >
+							<a href="/tetris-web/admin/activerTetri?id=${tetri.id}" class="btn btn-outline-primary"> Activer</a>
+							<a href="/tetris-web/admin/desactiverTetri?id=${tetri.id}" class="btn btn-danger"> Désactiver</a>
+						</c:if>
+						</td>
 						
 						<td><a href="/tetris-web/admin/modifierTetri?id=${tetri.id}" class="btn btn-outline-secondary">Modifier</a>
 						<a href="/tetris-web/admin/supprimerTetri?id=${tetri.id}" class="btn btn-outline-warning">Supprimer</a></td>
