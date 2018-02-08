@@ -12,14 +12,13 @@ import tetris.model.piece.Tetrimino;
 
 @RestController
 @RequestMapping("/admin/tetriminos")
-public class TetriminoRestController {
-
+public class TetriRestController {
+	
 	@Autowired
 	private ITetriminoDAO daoTetri;
 	
-	@GetMapping("")
-	public List<Tetrimino> ListeTetri() {
+	@GetMapping("") //http://localhost:8080/tetris-web/api/admin/tetriminos
+	public List<Tetrimino> listTetris() {
 		return this.daoTetri.findAll();
 	}
-	
 }

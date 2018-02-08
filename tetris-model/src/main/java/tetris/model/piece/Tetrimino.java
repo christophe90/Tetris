@@ -29,6 +29,17 @@ public abstract class Tetrimino implements Serializable {
 	@OneToMany(mappedBy="tetrimino")
 	private List<Coup> listCoups;
 	
+	@Column(name="TET_ACTIF")
+	private boolean actif;
+	
+	public boolean isActif() {
+		return actif;
+	}
+
+	public void setActif(boolean actif) {
+		this.actif = actif;
+	}
+
 	public String[][] stringToArray(String myStr) {
 	
 		String[] ligne = myStr.split("/");

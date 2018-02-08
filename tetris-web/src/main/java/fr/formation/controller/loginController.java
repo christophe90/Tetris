@@ -51,7 +51,6 @@ public class loginController {
 		}
 		model.addAttribute("login", login);
 		session.setAttribute("login", login);
-		System.out.println(session.getAttribute("login"));
 		return "redirect:/admin/home/{login}";
 	}
 	

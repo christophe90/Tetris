@@ -20,6 +20,7 @@
 						<td>${tetri.id}</td>
 						<td>${tetri.nom}</td>
 						<td>${tetri.couleur}</td>
+						
 						<td>
 							<table class="table table-bordered">
 								<c:forTokens items = "${tetri.str}" delims = "/" var="ligne">
@@ -36,8 +37,10 @@
 								</c:forTokens>
 							</table>
 						</td>
-						<td><a href="/tetris-web/admin/activerTetri?id=${tetri.id}" class="btn btn-outline-primary"> Activer</a>
-						<a href="/tetris-web/admin/desactiverTetri?id=${tetri.id}" class="btn btn-outline-danger"> Désactiver</a></td>
+						
+						<td><a href="/tetris-web/admin/activerTetri?id=${tetri.id}" class="btn btn-outline-primary active"> Activer</a>
+						<a href="/tetris-web/admin/desactiverTetri?id=${tetri.id}" class="btn btn-outline-danger disabled"> Désactiver</a></td>
+						
 						<td><a href="/tetris-web/admin/modifierTetri?id=${tetri.id}" class="btn btn-outline-secondary">Modifier</a>
 						<a href="/tetris-web/admin/supprimerTetri?id=${tetri.id}" class="btn btn-outline-warning">Supprimer</a></td>
 					</tr>
