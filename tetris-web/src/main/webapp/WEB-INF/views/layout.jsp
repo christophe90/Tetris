@@ -2,9 +2,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<link rel="stylesheet" href="/tetris-web/css/bootstrap.min.css"/>
 
-<head></head>
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="/tetris-web/css/bootstrap.min.css"/>
+<meta charset="utf-8" />
+</head>
 
 <body>
 
@@ -27,3 +32,4 @@
 	<script src="js/bootstrap.min.js"></script>
 
 </body>
+</html>

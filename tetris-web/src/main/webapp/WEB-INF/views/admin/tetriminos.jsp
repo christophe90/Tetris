@@ -27,8 +27,29 @@
 									<tr>
 									<c:forTokens items = "${ligne}" delims = "," var="carac">
 										<c:if test="${carac == 1}">
-<!-- 											<td class="bg-warning"></td> -->
-												<td bgcolor="#1eed25" >
+
+											<c:if test="${tetri.couleur == 'bleu'}">
+												<td bgcolor="#00bbff" ></td>
+											</c:if>
+											<c:if test="${tetri.couleur == 'vert'}">
+												<td bgcolor="#00ff3f" ></td>
+											</c:if>
+											<c:if test="${tetri.couleur == 'rouge'}">
+												<td bgcolor="#ff0000" ></td>
+											</c:if>
+											<c:if test="${tetri.couleur == 'jaune'}">
+												<td bgcolor="#ffe100" ></td>
+											</c:if>
+											<c:if test="${tetri.couleur == 'rose'}">
+												<td bgcolor="#ff0087" ></td>
+											</c:if>
+											<c:if test="${tetri.couleur == 'orange'}">
+												<td bgcolor="#ff8800" ></td>
+											</c:if>
+											<c:if test="${tetri.couleur == 'violet'}">
+												<td bgcolor="#ff00d4" ></td>
+											</c:if>
+											
 										</c:if>
 										<c:if test="${carac == 0}">
 											<td class="table-light"></td>

@@ -7,7 +7,7 @@
 	<tiles:putAttribute name="title1" value="Ajout d'un tetrimino" />
 	<tiles:putAttribute name="content">
 		
-		<form:form method="post" modelAttribute="tetrimino">
+		<form:form method="post" modelAttribute="tetrimino" accept-charset="ISO-8859-1">
 			<!-- <div class="form-group">
 				<label for="largeur">Largeur</label> 
 				<input id="largeur" class="form-control" name="largeur" type="text" value="${ largeur }" /> 
