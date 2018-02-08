@@ -45,15 +45,19 @@ function afficherPlateauCouleur(plateau) {
 	for (let i=0; i<plateau.length; i++)
 		for (let j=0; j<plateau[i].length; j++) {
 			if (plateau[i][j]==1)
-				createColoredPiece(i, j, "#ffe62d");
+				createColoredPiece(i, j, "#00bbff");
 			else if (plateau[i][j]==2)
-				createColoredPiece(i, j, "#ff0000");
+				createColoredPiece(i, j, "#00ff3f");
 			else if (plateau[i][j]==3)
-				createColoredPiece(i, j, "#00ff2a");
+				createColoredPiece(i, j, "#ff0000");
 			else if (plateau[i][j]==4)
-				createColoredPiece(i, j, "#ff00e5");
+				createColoredPiece(i, j, "#ffe100");
 			else if (plateau[i][j]==5)
-				createColoredPiece(i, j, "#0077ff");
+				createColoredPiece(i, j, "#ff0087");
+			else if (plateau[i][j]==6)
+				createColoredPiece(i, j, "#ff8800");
+			else if (plateau[i][j]==7)
+				createColoredPiece(i, j, "#ff00d4");
 		}
 }
 
