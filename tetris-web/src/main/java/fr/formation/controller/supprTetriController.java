@@ -17,9 +17,9 @@ public class supprTetriController {
 	private ITetriminoDAO daoTetri;
 	
 	@GetMapping("")
-	public String suppression(@RequestParam("id") int id,Model model) {
+	public String suppression(@RequestParam("id") int id, Model model) {
 		daoTetri.deleteById(id);
-		return "redirect:/admin/tetriminos/${login}";
+		return "redirect:/admin/tetriminos";
 	}
 	
 }

@@ -21,7 +21,7 @@
 						<td>${tetri.nom}</td>
 						<td>${tetri.couleur}</td>
 						<td>
-							<table>
+							<table class="table table-bordered">
 								<c:forTokens items = "${tetri.str}" delims = "/" var="ligne">
 									<tr>
 									<c:forTokens items = "${ligne}" delims = "," var="carac">
