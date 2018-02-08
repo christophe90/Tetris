@@ -1,5 +1,6 @@
 package fr.formation.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class loginController {
 	}
 	
 	@PostMapping(value={"", "/{message}"})
-	public String ajoutProduit(@Valid@ModelAttribute("admin") Admin admin, BindingResult result, Model model, @RequestParam("login") String login) {
+	public String ajoutProduit(@Valid@ModelAttribute("admin") Admin admin, BindingResult result, Model model, @RequestParam("login") String login, HttpSession session) {
 		if (result.hasErrors()) {
 			return "admin/connexion";
 		}
@@ -49,6 +50,7 @@ public class loginController {
 			return "redirect:./connexion/{message}";
 		}
 		model.addAttribute("login", login);
+		session.setAttribute("login", login);
 		return "redirect:/admin/home/{login}";
 	}
 	

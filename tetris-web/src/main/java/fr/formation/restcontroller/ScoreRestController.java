@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.formation.dao.ITetriminoDAO;
-import tetris.model.piece.Tetrimino;
+import fr.formation.dao.IPartieDAO;
+import tetris.model.jeu.Partie;
 
 @RestController
-@RequestMapping("/admin/tetriminos")
-public class TetriminoRestController {
+@RequestMapping("/admin/home")
+public class ScoreRestController {
 
 	@Autowired
-	private ITetriminoDAO daoTetri;
+	private IPartieDAO daoPartie;
 	
-	@GetMapping("")
-	public List<Tetrimino> ListeTetri() {
-		return this.daoTetri.findAll();
+	@GetMapping("") //http://localhost:8080/tetris-web/api/admin/home
+	public List<Partie> listParties() {
+		return this.daoPartie.findAll();
 	}
 	
 }

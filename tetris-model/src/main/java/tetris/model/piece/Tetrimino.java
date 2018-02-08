@@ -10,7 +10,8 @@ import tetris.model.jeu.Coup;
 @Entity
 @Table(name="tetrimino")
 @Inheritance(strategy=InheritanceType.JOINED)
-public abstract class Tetrimino implements Serializable {
+//public abstract class Tetrimino implements Serializable {
+public class Tetrimino implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +30,17 @@ public abstract class Tetrimino implements Serializable {
 	@OneToMany(mappedBy="tetrimino")
 	private List<Coup> listCoups;
 	
+	@Column(name="TET_ACTIF")
+	private boolean actif;
+	
+	public boolean isActif() {
+		return actif;
+	}
+
+	public void setActif(boolean actif) {
+		this.actif = actif;
+	}
+
 	public String[][] stringToArray(String myStr) {
 	
 		String[] ligne = myStr.split("/");

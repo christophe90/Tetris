@@ -6,10 +6,10 @@
     <a class="nav-link active" href="/tetris-web/admin/home/${login}">Accueil</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" href="/tetris-web/admin/faq/${login}">FAQ</a>
+    <a class="nav-link active" href="/tetris-web/admin/faq/liste">FAQ</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" href="/tetris-web/admin/tetriminos/${login}">Tetriminos</a>
+    <a class="nav-link active" href="/tetris-web/admin/tetriminos">Tetriminos</a>
   </li>
   <li class="nav-item">
     <a class="nav-link active" href="/tetris-web/admin/connexion">Déconnexion</a>
