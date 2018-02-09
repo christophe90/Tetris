@@ -15,6 +15,7 @@
 			leftTetri: 0 // position horizontale du tetrimino dans le plateau
 		};
 	var mouvementAutorisee;
+	var nbTetris = 4;
 
 	// Creation du plateau
 
@@ -154,7 +155,7 @@
 	
 	function nouvellePiece(plateau, tetrimino) {
 		// charge la piece suivante
-		tetrimino.id = ((tetrimino.id + 1) % 3) + 1;
+		tetrimino.id = ((tetrimino.id + 1) % (nbTetris-1)) + 1;
 		creationTetrimino(tetrimino);
 		
 		var tetriTest = testPlacementCreation(plateau, tetrimino);
@@ -282,7 +283,7 @@
 			emplacementZero(plateau, tetrimino);
 			
 			// modif du tetrimino
-			tetrimino.rot = (tetrimino.rot + 1) % 4;
+			tetrimino.rot = (tetrimino.rot + 1) % nbTetris;
 			tetrimino = propTetrimino(tetrimino);
 			
 			// placement du tetrimino
